@@ -1,3 +1,5 @@
+import java.util.List;
+
 public class Pibid {
 	private GerenciadorPibid gerenciador;
 	
@@ -5,9 +7,14 @@ public class Pibid {
 		this.gerenciador= new GerenciadorPibid();	
 	}
 	
-	public void CadastraCoordenador(Coordenador coo){
-		gerenciador.CadastraCoordenador(coo);	
+	public void cadastraCoordenador(Coordenador coo){
+		gerenciador.cadastraCoordenador(coo);	
 	}
 	
+	public List<Coordenador> getListaDeCoordenadoresCriados(){
+		return gerenciador.getListaDeCoordenadoresCriados();
+	}
+
 
 }
+ 
