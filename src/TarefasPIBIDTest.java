@@ -12,8 +12,11 @@ public class TarefasPIBIDTest {
 	public void Inicializar() {
 		this.tarefa = new Tarefa();
 	}
-
-	 
+	
+	@Test
+	public void verificarTarefaCriada(){
+		assertNotNull(this.tarefa);
+	}
 
 	
 
