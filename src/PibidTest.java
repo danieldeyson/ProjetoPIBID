@@ -15,12 +15,30 @@ public class PibidTest {
 	
 	@Test
 	public void cadastraCoordenadorTest(){
-		Coordenador coo= new Coordenador("Ana Liz","12345678");
-		pibid.cadastraCoordenador(coo);
+		Coordenador coord= new Coordenador("Ana Liz","12345678");
+		pibid.cadastraCoordenador(coord);
 		List<Coordenador> lista = pibid.getListaDeCoordenadoresCriados();
 		assertEquals(1,lista.size());
-		assertEquals(coo, lista.get(0));
+		assertEquals(coord, lista.get(0));
 	}
 	
+	@Test
+	public void cadastraAlunoTest(){
+		Aluno aluno= new Aluno("Luana Costa","81211021");
+		pibid.cadastrarAluno(aluno);
+		List<Aluno> list=pibid.getListaDeAlunosCriados();
+		assertEquals(1,list.size());
+		assertEquals(aluno,list.get(0));
+	}
+	
+	@Test
+	public void cadastrarTarefasTest(){
+		Aluno aluno=new Aluno("Deyvison","81212121");
+		Tarefa tarefa=new Tarefa(aluno,"Elaborar Apostilas");
+		pibid.cadastrarTarefa(tarefa);
+		List<Tarefa> lista=pibid.getListaDeTarefas();
+		assertEquals(1,lista.size());
+		assertEquals(tarefa,lista.get(0));
+	}
 	
 }
