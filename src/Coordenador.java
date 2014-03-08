@@ -1,12 +1,13 @@
 
-public class Coordenador {
-	
-	private String nome;
-	private String siape;
-	
+public class Coordenador extends Pessoa{
 	public Coordenador(String nome, String siape){
-		this.nome=nome;
-		this.siape=siape;
+		super(nome, siape);
+	}
+	public String getDescricao(){
+		return "Nome: "+super.getNome()+" | SIAPE: "+super.getMatricula();
+	}
+	public String toString(){
+		return getDescricao();
 	}
 
 }
