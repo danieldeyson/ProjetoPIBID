@@ -42,6 +42,7 @@ public class PibidTest {
 		assertEquals(1,lista.size());
 		assertEquals(tarefa,lista.get(0));
 	}
+	@Test
 	public void removerAlunoTest(){
 		Aluno a= new Aluno("Luana","81211021");
 		pibid.removerAluno(a);
@@ -49,6 +50,15 @@ public class PibidTest {
 		assertEquals(0,alunos.size());
 		
 	}
+	@Test
+	public void removerCoordenadorTest(){
+		Coordenador c= new Coordenador("Ana Liz","12345678");
+		pibid.removerCoordenador(c);
+		List<Coordenador> coord = pibid.getListaDeCoordenadoresCriados();
+		assertEquals(0,coord.size());
+		
+	}
+	
 	
 	
 	

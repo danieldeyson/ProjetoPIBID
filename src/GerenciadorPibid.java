@@ -30,5 +30,8 @@ public class GerenciadorPibid{
 	public void removerAluno(Aluno a){
 		this.alunos.remove(a);
 	}
+	public void removerCoordenador(Coordenador c){
+		this.coordenadores.remove(c);
+	}
 
 }

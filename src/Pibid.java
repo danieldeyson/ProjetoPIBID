@@ -30,5 +30,9 @@ public class Pibid {
 	public void removerAluno(Aluno a){
 		gerenciador.removerAluno(a);
 	}
+	public void removerCoordenador(Coordenador c){
+		gerenciador.removerCoordenador(c);
+	}
+	
 }
  
