@@ -33,6 +33,12 @@ public class Pibid {
 	public void removerCoordenador(Coordenador c){
 		gerenciador.removerCoordenador(c);
 	}
-	
+
+	public void cadastrarGrupo(Grupo grupo) {
+		gerenciador.cadastrarGrupo(grupo);
+	}
+	public Grupo pesquisarGrupo(String codigo){
+		return gerenciador.pesquisarGrupo(codigo);
+	}
 }
  

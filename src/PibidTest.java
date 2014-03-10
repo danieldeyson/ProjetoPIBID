@@ -34,8 +34,8 @@ public class PibidTest {
 	
 	@Test
 	public void cadastrarTarefasTest(){
-		Tarefa tarefa=new Tarefa("Elaborar Apostilas");
-		Grupo g = new Grupo(tarefa);
+		Tarefa tarefa=new Tarefa("Ministrar aula de HTML");
+		Grupo g = new Grupo(tarefa,"01");
 		pibid.cadastrarTarefa(tarefa);
 		List<Tarefa> lista=pibid.getListaDeTarefas();
 		assertEquals(1,lista.size());
@@ -57,12 +57,11 @@ public class PibidTest {
 		assertEquals(0,coord.size());
 		
 	}
-	
-	
 	@Test
 	public void cadastrarGrupoTest(){
-		
-		Grupo gupo=new Grupo("Ministrar aula de HTML",);
-		
+		Tarefa tarefa=new Tarefa("Ministrar Aula de Python");
+		Grupo grupo=new Grupo(tarefa,"012");
+		pibid.cadastrarGrupo(grupo);
+		assertEquals(grupo,pibid.pesquisarGrupo("012"));
 	}
 }

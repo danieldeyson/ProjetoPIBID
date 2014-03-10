@@ -2,10 +2,11 @@ import java.util.List;
 
 public class Grupo {
 	private Tarefa tarefa;
+	private String codigoGrupo;
 	private List <Aluno> alunos;
-	public Grupo(Tarefa tarefa, List <Aluno> alunos){
+	public Grupo(Tarefa tarefa, String codigoGrupo){
 		this.tarefa = tarefa;
-		this.alunos = alunos;
+		this.codigoGrupo=codigoGrupo;
 	}
 	public String getDescricao(){
 		String aluno = "";
@@ -16,6 +17,9 @@ public class Grupo {
 	}
 	public String toString(){
 		return getDescricao();
+	}
+	public String getCodigoGrupo(){
+		return this.codigoGrupo;
 	}
 }
  

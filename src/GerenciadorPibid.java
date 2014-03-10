@@ -33,5 +33,19 @@ public class GerenciadorPibid{
 	public void removerCoordenador(Coordenador c){
 		this.coordenadores.remove(c);
 	}
-
+	public void cadastrarGrupo(Grupo grupo){
+		this.grupos.add(grupo);
+	}
+	public List<Grupo> getListaDeGrupos(){
+		return this.grupos;
+	}
+	public Grupo pesquisarGrupo(String codigo){
+		for(Grupo i: this.grupos){
+			if(i.getCodigoGrupo().equals(codigo)){
+				return i;
+			}
+		}
+		return null;
+	}
+		
 }
