@@ -69,7 +69,7 @@ public class PibidTest {
 	}
 	
 	@Test
-	public void pesquisarGrupoInexistente(){
+	public void pesquisarGrupoInexistenteTest(){
 		Tarefa t = new Tarefa("Ministrar curso de HTML");
 		Grupo g = new Grupo(t,"123");
 		pibid.cadastrarGrupo(g);
