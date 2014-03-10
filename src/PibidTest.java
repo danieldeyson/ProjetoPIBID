@@ -41,6 +41,7 @@ public class PibidTest {
 		assertEquals(1,lista.size());
 		assertEquals(tarefa,lista.get(0));
 	}
+	
 	@Test
 	public void removerAlunoTest(){
 		Aluno a= new Aluno("Luana","81211021");
@@ -49,6 +50,7 @@ public class PibidTest {
 		assertEquals(0,alunos.size());
 		
 	}
+	
 	@Test
 	public void removerCoordenadorTest(){
 		Coordenador c= new Coordenador("Ana Liz","12345678");
@@ -57,11 +59,21 @@ public class PibidTest {
 		assertEquals(0,coord.size());
 		
 	}
+	
 	@Test
 	public void cadastrarGrupoTest(){
-		Tarefa tarefa=new Tarefa("Ministrar Aula de Python");
-		Grupo grupo=new Grupo(tarefa,"012");
+		Tarefa tarefa = new Tarefa("Ministrar Aula de Python");
+		Grupo grupo = new Grupo(tarefa,"012");
 		pibid.cadastrarGrupo(grupo);
 		assertEquals(grupo,pibid.pesquisarGrupo("012"));
 	}
+	
+	@Test
+	public void pesquisarGrupoInexistente(){
+		Tarefa t = new Tarefa("Ministrar curso de HTML");
+		Grupo g = new Grupo(t,"123");
+		pibid.cadastrarGrupo(g);
+		assertNull(pibid.pesquisarGrupo("321"));
+	}
+	
 }
