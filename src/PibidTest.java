@@ -1,8 +1,6 @@
 import static org.junit.Assert.*;
-
 import java.util.LinkedList;
 import java.util.List;
-
 import org.junit.Before;
 import org.junit.Test;
 
@@ -41,6 +39,7 @@ public class PibidTest {
 		assertEquals(1,lista.size());
 		assertEquals(tarefa,lista.get(0));
 	}
+	
 	@Test
 	public void removerAlunoTest(){
 		Aluno a= new Aluno("Luana","81211021");
@@ -49,6 +48,7 @@ public class PibidTest {
 		assertEquals(0,alunos.size());
 		
 	}
+	
 	@Test
 	public void removerCoordenadorTest(){
 		Coordenador c= new Coordenador("Ana Liz","12345678");
@@ -57,6 +57,7 @@ public class PibidTest {
 		assertEquals(0,coord.size());
 		
 	}
+	
 	@Test
 	public void cadastrarGrupoTest(){
 		Tarefa tarefa=new Tarefa("Ministrar Aula de Python");
@@ -64,4 +65,5 @@ public class PibidTest {
 		pibid.cadastrarGrupo(grupo);
 		assertEquals(grupo,pibid.pesquisarGrupo("012"));
 	}
+	
 }
