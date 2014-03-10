@@ -73,5 +73,20 @@ public class PibidTest {
 		pibid.cadastrarGrupo(g);
 		assertNull(pibid.pesquisarGrupo("321"));
 	}
+	
+	@Test 
+	public void cadastrarAlunosEmGrupo(){
+		Tarefa t = new Tarefa("Ministrar curso de Scratch");
+		Grupo g = new Grupo(t,"123");
+		pibid.cadastrarGrupo(g);
+		Aluno a = new Aluno("Deyvison","12234576");
+		Aluno a1 = new Aluno("Tayna","53344545");
+		g.cadastrarParticipante(a);
+		g.cadastrarParticipante(a1);
+		List<Aluno> participantes = g.listParticipantes();
+		assertEquals(2, participantes.size());
+		assertEquals(a, participantes.get(0));
+		assertEquals(a1, participantes.get(1));	
+	}
 
 }
