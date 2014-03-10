@@ -60,10 +60,18 @@ public class PibidTest {
 	
 	@Test
 	public void cadastrarGrupoTest(){
-		Tarefa tarefa=new Tarefa("Ministrar Aula de Python");
-		Grupo grupo=new Grupo(tarefa,"012");
+		Tarefa tarefa = new Tarefa("Ministrar Aula de Python");
+		Grupo grupo = new Grupo(tarefa,"012");
 		pibid.cadastrarGrupo(grupo);
 		assertEquals(grupo,pibid.pesquisarGrupo("012"));
 	}
 	
+	@Test
+	public void pesquisarGrupoInexistenteTest(){
+		Tarefa t = new Tarefa("Ministrar curso de HTML");
+		Grupo g = new Grupo(t,"123");
+		pibid.cadastrarGrupo(g);
+		assertNull(pibid.pesquisarGrupo("321"));
+	}
+
 }
