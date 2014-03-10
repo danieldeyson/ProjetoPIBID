@@ -34,7 +34,6 @@ public class PibidTest {
 	
 	@Test
 	public void cadastrarTarefasTest(){
-		
 		Tarefa tarefa=new Tarefa("Elaborar Apostilas");
 		Grupo g = new Grupo(tarefa);
 		pibid.cadastrarTarefa(tarefa);
@@ -43,6 +42,10 @@ public class PibidTest {
 		assertEquals(tarefa,lista.get(0));
 	}
 	
-	
-	
+	@Test
+	public void cadastrarGrupoTest(){
+		
+		Grupo gupo=new Grupo("Ministrar aula de HTML",);
+		
+	}
 }
