@@ -27,6 +27,8 @@ public class GerenciadorPibid{
 		this.tarefas.add(tarefa);
 		
 	}
-	
+	public void removerAluno(Aluno a){
+		this.alunos.remove(a);
+	}
 
 }

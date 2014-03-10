@@ -27,5 +27,8 @@ public class Pibid {
 	public void cadastrarTarefa(Tarefa tarefa){
 		gerenciador.cadastraTarefa(tarefa);
 	}
+	public void removerAluno(Aluno a){
+		gerenciador.removerAluno(a);
+	}
 }
  

@@ -42,6 +42,13 @@ public class PibidTest {
 		assertEquals(1,lista.size());
 		assertEquals(tarefa,lista.get(0));
 	}
+	public void removerAlunoTest(){
+		Aluno a= new Aluno("Luana","81211021");
+		pibid.removerAluno(a);
+		List<Aluno> alunos = pibid.getListaDeAlunosCriados();
+		assertEquals(0,alunos.size());
+		
+	}
 	
 	
 	
