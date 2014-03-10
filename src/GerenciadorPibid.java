@@ -4,7 +4,8 @@ import java.util.List;
 public class GerenciadorPibid{
 	private List<Aluno> alunos=new LinkedList<Aluno>();
 	private List<Coordenador> coordenadores=new LinkedList<Coordenador>();
-	private List<Tarefa> tarefas=new LinkedList<Tarefa>();
+	private List<Grupo> grupos= new LinkedList<Grupo>();
+	private List<Tarefa> tarefas= new LinkedList<Tarefa>();
 
 	public void cadastraCoordenador(Coordenador coo1) {
 		this.coordenadores.add(coo1);
@@ -19,11 +20,13 @@ public class GerenciadorPibid{
 	public List<Aluno> getListaDeAlunosCriados(){
 		return this.alunos;
 	}
-	public void cadastraTarefa(Tarefa tarefa){
-		this.tarefas.add(tarefa);
-	}
-	public List<Tarefa> getListaDeTarefas(){
+	public List<Tarefa> getListaDeTarefas() {
 		return this.tarefas;
 	}
+	public void cadastraTarefa(Tarefa tarefa) {
+		this.tarefas.add(tarefa);
+		
+	}
+	
 
 }

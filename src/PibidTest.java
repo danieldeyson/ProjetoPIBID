@@ -1,5 +1,6 @@
 import static org.junit.Assert.*;
 
+import java.util.LinkedList;
 import java.util.List;
 
 import org.junit.Before;
@@ -33,12 +34,15 @@ public class PibidTest {
 	
 	@Test
 	public void cadastrarTarefasTest(){
-		Aluno aluno=new Aluno("Deyvison","81212121");
-		Tarefa tarefa=new Tarefa(aluno,"Elaborar Apostilas");
+		
+		Tarefa tarefa=new Tarefa("Elaborar Apostilas");
+		Grupo g = new Grupo(tarefa);
 		pibid.cadastrarTarefa(tarefa);
 		List<Tarefa> lista=pibid.getListaDeTarefas();
 		assertEquals(1,lista.size());
 		assertEquals(tarefa,lista.get(0));
 	}
+	
+	
 	
 }
