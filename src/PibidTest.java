@@ -40,22 +40,19 @@ public class PibidTest {
 		assertEquals(tarefa,lista.get(0));
 	}
 	
-	@Test
-	public void removerAlunoTest(){
-		Aluno a= new Aluno("Luana","81211021");
-		pibid.removerAluno(a);
-		List<Aluno> alunos = pibid.getListaDeAlunosCriados();
-		assertEquals(0,alunos.size());
-		
-	}
-	
-	@Test
-	public void removerCoordenadorTest(){
-		Coordenador c= new Coordenador("Ana Liz","12345678");
-		pibid.removerCoordenador(c);
-		List<Coordenador> coord = pibid.getListaDeCoordenadoresCriados();
-		assertEquals(0,coord.size());
-		
+	@Test 
+	public void cadastrarAlunosEmGrupoTest(){
+		Tarefa t = new Tarefa("Ministrar curso de Scratch");
+		Grupo g = new Grupo(t,"123");
+		pibid.cadastrarGrupo(g);
+		Aluno a = new Aluno("Deyvison","12234576");
+		Aluno a1 = new Aluno("Tayna","53344545");
+		g.cadastrarParticipante(a);
+		g.cadastrarParticipante(a1);
+		List<Aluno> participantes = g.listParticipantes();
+		assertEquals(2, participantes.size());
+		assertEquals(a, participantes.get(0));
+		assertEquals(a1, participantes.get(1));	
 	}
 	
 	@Test
@@ -74,19 +71,26 @@ public class PibidTest {
 		assertNull(pibid.pesquisarGrupo("321"));
 	}
 	
-	@Test 
-	public void cadastrarAlunosEmGrupo(){
-		Tarefa t = new Tarefa("Ministrar curso de Scratch");
-		Grupo g = new Grupo(t,"123");
-		pibid.cadastrarGrupo(g);
-		Aluno a = new Aluno("Deyvison","12234576");
-		Aluno a1 = new Aluno("Tayna","53344545");
-		g.cadastrarParticipante(a);
-		g.cadastrarParticipante(a1);
-		List<Aluno> participantes = g.listParticipantes();
-		assertEquals(2, participantes.size());
-		assertEquals(a, participantes.get(0));
-		assertEquals(a1, participantes.get(1));	
+	@Test
+	public void pesquisaAlunoTest(){
+		Aluno a = new Aluno("Luana","81211067");
+		pibid.cadastrarAluno(a);
+		assertEquals(a,pibid.pesquisaAluno("81211067"));	
 	}
-
+	
+	@Test
+	public void removerAlunoTest(){
+		Aluno a= new Aluno("Luana","81211021");
+		pibid.removerAluno(a);
+		List<Aluno> alunos = pibid.getListaDeAlunosCriados();
+		assertEquals(0,alunos.size());	
+	}
+	
+	@Test
+	public void removerCoordenadorTest(){
+		Coordenador c= new Coordenador("Ana Liz","12345678");
+		pibid.removerCoordenador(c);
+		List<Coordenador> coord = pibid.getListaDeCoordenadoresCriados();
+		assertEquals(0,coord.size());	
+	}
 }
