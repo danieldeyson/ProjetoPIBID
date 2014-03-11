@@ -11,8 +11,20 @@ public class GerenciadorPibid{
 	private List<Tarefa> tarefas= new LinkedList<Tarefa>();
 
 
-	public void cadastraCoordenador(Coordenador coo1) {
-		this.coordenadores.add(coo1);	
+	public void cadastraCoordenador(Coordenador coo1) throws CoordenadorExistenteException {
+		boolean existe=false;
+		for (Coordenador c: this.coordenadores){
+			if(c.getMatricula().equals(coo1.getMatricula())){
+				existe=true;
+				break;
+			}
+		}
+		if(existe==false){
+			this.coordenadores.add(coo1);
+		}
+		else{
+			throw new CoordenadorExistenteException("Coordenador Existente!");
+		}
 	}
 	
 	public List<Coordenador> getListaDeCoordenadoresCriados(){
@@ -64,10 +76,6 @@ public class GerenciadorPibid{
 			}
 		}
 		return null;
-	}
-	
-	public void pesquisarGrupoInexistenteTest(){
-		//TERMINAR
 	}
 
 	public void removerAlunoPelaMatricula(String matricula) throws AlunoInexistenteException {
