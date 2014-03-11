@@ -1,6 +1,8 @@
 import java.util.LinkedList;
 import java.util.List;
 
+import org.junit.Test;
+
 public class GerenciadorPibid{
 	
 	private List<Aluno> alunos=new LinkedList<Aluno>();
@@ -68,8 +70,23 @@ public class GerenciadorPibid{
 		//TERMINAR
 	}
 
-	public void removerAluno(Aluno a){
-		this.alunos.remove(a);
+	public void removerAlunoPelaMatricula(String matricula) throws AlunoInexistenteException {
+		
+		boolean removeu=false;
+		
+		for (Aluno x: this.alunos){
+			
+			if (x.getMatricula().equalsIgnoreCase(matricula)){
+				removeu = true;
+				alunos.remove(x);
+			}
+			
+			
+		}
+		if(removeu ==false){
+			throw new AlunoInexistenteException("Impossível remover,pois não existe!");
+		}
+			
 	}
 	
 	public void removerCoordenador(Coordenador c){

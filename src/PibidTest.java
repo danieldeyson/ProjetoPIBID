@@ -78,10 +78,10 @@ public class PibidTest {
 		assertEquals(a,pibid.pesquisaAluno("81211067"));	
 	}
 	
-	@Test
-	public void removerAlunoTest(){
+	@Test(expected = AlunoInexistenteException.class)
+	public void removerAlunoPelaMatriculaTest() throws AlunoInexistenteException{
 		Aluno a= new Aluno("Luana","81211021");
-		pibid.removerAluno(a);
+		pibid.removerAlunoPelaMatricula(a.getMatricula());
 		List<Aluno> alunos = pibid.getListaDeAlunosCriados();
 		assertEquals(0,alunos.size());	
 	}

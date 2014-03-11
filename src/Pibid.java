@@ -48,8 +48,8 @@ public class Pibid {
 		return gerenciador.pesquisaAluno(matricula);
 	}
 	
-	public void removerAluno(Aluno a){
-		gerenciador.removerAluno(a);
+	public void removerAlunoPelaMatricula(String matricula)throws AlunoInexistenteException{
+		gerenciador.removerAlunoPelaMatricula(matricula);
 	}
 	
 	public void removerCoordenador(Coordenador c){
