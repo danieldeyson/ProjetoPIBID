@@ -82,6 +82,13 @@ public class PibidTest {
 	}
 	
 	@Test(expected = AlunoInexistenteException.class)
+	public void pesquisarAlunoInexistenteTest(){
+		Aluno a = new Aluno("Marina","81211133");
+		pibid.cadastrarAluno(a);
+		Aluno a1 = pibid.pesquisaAluno("1312312");
+	}
+	
+	@Test(expected = AlunoInexistenteException.class)
 	public void removerAlunoPelaMatriculaTest() throws AlunoInexistenteException{
 		Aluno a= new Aluno("Luana","81211021");
 		pibid.removerAlunoPelaMatricula(a.getMatricula());

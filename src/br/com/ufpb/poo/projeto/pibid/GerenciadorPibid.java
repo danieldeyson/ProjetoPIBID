@@ -70,13 +70,14 @@ public class GerenciadorPibid{
 	}
 	
 	public Aluno pesquisaAluno(String matricula){
+		
 		for ( Aluno a: alunos){
 			if(a.getMatricula().equalsIgnoreCase(matricula)){
 				
 				return a;
 			}
 		}
-		return null;
+		throw new AlunoInexistenteException ("Aluno Inexistente!");
 	}
 
 	public void removerAlunoPelaMatricula(String matricula) throws AlunoInexistenteException {

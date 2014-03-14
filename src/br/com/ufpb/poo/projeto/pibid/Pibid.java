@@ -62,10 +62,5 @@ public class Pibid {
 		this.gerenciador.cadastrarParticipante(a,g);
 		
 	}
-
-	
-	
-	
-	
 }
  
