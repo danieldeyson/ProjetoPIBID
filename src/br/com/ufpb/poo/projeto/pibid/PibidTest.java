@@ -96,4 +96,17 @@ public class PibidTest {
 		List<Coordenador> coord = pibid.getListaDeCoordenadoresCriados();
 		assertEquals(0,coord.size());	
 	}
+	
+	@Test(expected = Exception.class)
+	public void cadastraUmAlunoQueJaParticipeDoGrupo(){
+		Aluno a = new Aluno("Deyvison", "66557788");
+		pibid.cadastrarAluno(a);
+		Aluno a1 = pibid.pesquisaAluno("66557788");
+		Tarefa t = new Tarefa("Planejar aula");
+		Grupo g = new Grupo(t,"123");
+		g.cadastrarParticipante(a1);
+		g.cadastrarParticipante(a1);
+		
+		
+	}
 }
