@@ -38,8 +38,8 @@ public class PibidTest {
 		assertEquals(aluno,list.get(0));
 	}
 	
-	@Test
-	public void cadastrarAlunoDublicadoTest(){
+	@Test(expected = AlunoExistenteException.class)
+	public void cadastrarAlunoDuplicadoTest(){
 		Aluno aluno1= new Aluno("Luana Tainá","81211021");
 		Aluno aluno2= new Aluno("Luana Tainá","81211021");
 		pibid.cadastrarAluno(aluno1);

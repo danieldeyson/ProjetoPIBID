@@ -33,7 +33,19 @@ public class GerenciadorPibid{
 	}
 	
 	public void cadastraAluno(Aluno aluno){
-		this.alunos.add(aluno);
+		boolean existe=false;
+		for (Aluno a: this.alunos){
+			if(a.getMatricula().equals(aluno.getMatricula())){
+				existe=true;
+				break;
+			}
+		}
+		if(existe==false){
+			this.alunos.add(aluno);
+		}
+		else{
+			throw new AlunoExistenteException("Aluno Existente!");
+		}
 	}
 	
 	public List<Aluno> getListaDeAlunosCriados(){
