@@ -106,7 +106,5 @@ public class PibidTest {
 		Grupo g = new Grupo(t,"123");
 		pibid.cadastrarParticipante(a1,g);
 		pibid.cadastrarParticipante(a1,g);
-		
-		
 	}
 }
