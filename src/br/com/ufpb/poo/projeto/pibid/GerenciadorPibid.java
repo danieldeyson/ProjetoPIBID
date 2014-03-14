@@ -12,7 +12,7 @@ public class GerenciadorPibid{
 	private List<Tarefa> tarefas= new LinkedList<Tarefa>();
 	private Grupo grupo;
 
-	public void cadastraCoordenador(Coordenador coo1) throws CoordenadorExistenteException {
+	public void cadastraCoordenador(Coordenador coo1) {
 		boolean existe=false;
 		for (Coordenador c: this.coordenadores){
 			if(c.getMatricula().equals(coo1.getMatricula())){
@@ -70,13 +70,14 @@ public class GerenciadorPibid{
 	}
 	
 	public Aluno pesquisaAluno(String matricula){
+		
 		for ( Aluno a: alunos){
 			if(a.getMatricula().equalsIgnoreCase(matricula)){
 				
 				return a;
 			}
 		}
-		return null;
+		throw new AlunoInexistenteException ("Aluno Inexistente!");
 	}
 
 	public void removerAlunoPelaMatricula(String matricula) throws AlunoInexistenteException {

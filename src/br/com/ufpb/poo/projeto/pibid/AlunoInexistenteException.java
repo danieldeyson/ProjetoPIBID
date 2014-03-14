@@ -1,6 +1,6 @@
 package br.com.ufpb.poo.projeto.pibid;
 
-public class AlunoInexistenteException extends Exception {
+public class AlunoInexistenteException extends RuntimeException {
 	
 	private static final long serialVersionUID = 1L;
 

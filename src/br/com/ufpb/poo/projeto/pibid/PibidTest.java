@@ -14,12 +14,18 @@ public class PibidTest {
 	}
 	
 	@Test(expected = CoordenadorExistenteException.class)
-	public void testarCadastroCoordenadorDuplicadoTest() throws CoordenadorExistenteException{
+	public void testarCadastroCoordenadorDuplicadoTest() {
 		Coordenador coord = new Coordenador("Ana Liz","12345678");
 		Coordenador coord2 = new Coordenador("Ana Liz","12345678");
 		pibid.cadastraCoordenador(coord);
 		pibid.cadastraCoordenador(coord2);
 		
+	}
+	
+	@Test
+	public void CadastrarCoordenadorTest(){
+		Coordenador coord = new Coordenador("Ana Liz","12345678");
+		pibid.cadastraCoordenador(coord);
 	}
 	
 	
@@ -30,6 +36,14 @@ public class PibidTest {
 		List<Aluno> list=pibid.getListaDeAlunosCriados();
 		assertEquals(1,list.size());
 		assertEquals(aluno,list.get(0));
+	}
+	
+	@Test
+	public void cadastrarAlunoDublicadoTest(){
+		Aluno aluno1= new Aluno("Luana Tainá","81211021");
+		Aluno aluno2= new Aluno("Luana Tainá","81211021");
+		pibid.cadastrarAluno(aluno1);
+		pibid.cadastrarAluno(aluno2);
 	}
 	
 	@Test
@@ -79,6 +93,13 @@ public class PibidTest {
 		Aluno a = new Aluno("Luana","81211067");
 		pibid.cadastrarAluno(a);
 		assertEquals(a,pibid.pesquisaAluno("81211067"));	
+	}
+	
+	@Test(expected = AlunoInexistenteException.class)
+	public void pesquisarAlunoInexistenteTest(){
+		Aluno a = new Aluno("Marina","81211133");
+		pibid.cadastrarAluno(a);
+		Aluno a1 = pibid.pesquisaAluno("1312312");
 	}
 	
 	@Test(expected = AlunoInexistenteException.class)
