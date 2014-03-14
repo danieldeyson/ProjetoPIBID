@@ -39,6 +39,14 @@ public class PibidTest {
 	}
 	
 	@Test
+	public void cadastrarAlunoDublicadoTest(){
+		Aluno aluno1= new Aluno("Luana Tainá","81211021");
+		Aluno aluno2= new Aluno("Luana Tainá","81211021");
+		pibid.cadastrarAluno(aluno1);
+		pibid.cadastrarAluno(aluno2);
+	}
+	
+	@Test
 	public void cadastrarTarefasTest(){
 		Tarefa tarefa=new Tarefa("Ministrar aula de HTML");
 		Grupo g = new Grupo(tarefa,"01");
