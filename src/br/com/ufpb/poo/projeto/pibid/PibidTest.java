@@ -13,14 +13,15 @@ public class PibidTest {
 		this.pibid = new Pibid();
 	}
 	
-	@Test
-	public void cadastraCoordenadorTest(){
-		Coordenador coord= new Coordenador("Ana Liz","12345678");
+	@Test(expected = CoordenadorExistenteException.class)
+	public void testarCadastroCoordenadorDuplicadoTest() throws CoordenadorExistenteException{
+		Coordenador coord = new Coordenador("Ana Liz","12345678");
+		Coordenador coord2 = new Coordenador("Ana Liz","12345678");
 		pibid.cadastraCoordenador(coord);
-		List<Coordenador> lista = pibid.getListaDeCoordenadoresCriados();
-		assertEquals(1,lista.size());
-		assertEquals(coord, lista.get(0));
+		pibid.cadastraCoordenador(coord2);
+		
 	}
+	
 	
 	@Test
 	public void cadastraAlunoTest(){
@@ -36,6 +37,7 @@ public class PibidTest {
 		Tarefa tarefa=new Tarefa("Ministrar aula de HTML");
 		Grupo g = new Grupo(tarefa,"01");
 		pibid.cadastrarTarefa(tarefa);
+		pibid.cadastrarGrupo(g);
 		List<Tarefa> lista=pibid.getListaDeTarefas();
 		assertEquals(1,lista.size());
 		assertEquals(tarefa,lista.get(0));
