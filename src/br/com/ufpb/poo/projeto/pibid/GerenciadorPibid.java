@@ -103,13 +103,13 @@ public class GerenciadorPibid{
 	}
 	public void removerAlunoPelaMatricula(String matricula) {
 		
-		boolean removeu=false;
+		boolean removeu = false;
 		
 		for (Aluno x: this.alunos){
 			
 			if (x.getMatricula().equals(matricula)){
 				removeu = true;
-				alunos.remove(x);
+				this.alunos.remove(x);
 			}
 			
 			
@@ -120,8 +120,19 @@ public class GerenciadorPibid{
 			
 	}
 	
-	public void removerCoordenador(Coordenador c){
-		this.coordenadores.remove(c);
+	public void removerCoordenadorPeloSiape(String siape){
+		boolean removeu = false;
+		
+		for (Coordenador c: this.coordenadores){
+			
+			if(c.getMatricula().equals(siape)){
+				removeu = true;
+				this.coordenadores.remove(c);
+			}
+		}
+		if(removeu == false){
+			throw new CoordenadorInexistenteException("Impossível remover, pois não existe!");
+		}
 	}
 
 	public void cadastrarParticipante(Aluno a,Grupo g) {

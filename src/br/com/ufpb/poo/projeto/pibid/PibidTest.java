@@ -116,19 +116,26 @@ public class PibidTest {
 	}
 	
 	@Test(expected = AlunoInexistenteException.class)
-	public void removerAlunoPelaMatriculaTest() throws AlunoInexistenteException{
+	public void removerAlunoPelaMatriculaTest(){
 		Aluno a= new Aluno("Luana","81211021");
-		pibid.removerAlunoPelaMatricula(a.getMatricula());
+		pibid.removerAlunoPelaMatricula("81211021");
 		List<Aluno> alunos = pibid.getListaDeAlunosCriados();
 		assertEquals(0,alunos.size());	
 	}
 	
-	@Test
-	public void removerCoordenadorTest(){
+	@Test(expected = CoordenadorInexistenteException.class)
+	public void removerCoordenadorPeloSiapeTest(){
 		Coordenador c= new Coordenador("Ana Liz","12345678");
-		pibid.removerCoordenador(c);
+		pibid.removerCoordenadorPeloSiape("12345678");
 		List<Coordenador> coord = pibid.getListaDeCoordenadoresCriados();
 		assertEquals(0,coord.size());	
+	}
+	
+	@Test(expected = CoordenadorInexistenteException.class)
+	public void removerCoordenadorInexistenteTest(){
+		pibid.removerCoordenadorPeloSiape("81241432");
+		List<Coordenador> coord = pibid.getListaDeCoordenadoresCriados();
+		assertEquals(0,coord.size());
 	}
 	
 	@Test(expected = Exception.class)

@@ -53,12 +53,12 @@ public class Pibid {
 		return this.gerenciador.pesquisarCoordenador(siape);
 	}
 	
-	public void removerAlunoPelaMatricula(String matricula)throws AlunoInexistenteException{
+	public void removerAlunoPelaMatricula(String matricula){
 		this.gerenciador.removerAlunoPelaMatricula(matricula);
 	}
 	
-	public void removerCoordenador(Coordenador c){
-		this.gerenciador.removerCoordenador(c);
+	public void removerCoordenadorPeloSiape(String siape){
+		this.gerenciador.removerCoordenadorPeloSiape(siape);
 	}
 
 	public void cadastrarParticipante(Aluno a,Grupo g) {
