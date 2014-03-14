@@ -11,51 +11,54 @@ public class Pibid {
 	}
 	
 	public void cadastraCoordenador(Coordenador coord){
-		gerenciador.cadastraCoordenador(coord);	
+		this.gerenciador.cadastraCoordenador(coord);	
 	}
 	
 	public void cadastrarAluno(Aluno aluno){
-		gerenciador.cadastraAluno(aluno);
+		this.gerenciador.cadastraAluno(aluno);
 	}
 	
 	public void cadastrarTarefa(Tarefa tarefa){
-		gerenciador.cadastraTarefa(tarefa);
+		this.gerenciador.cadastraTarefa(tarefa);
 	}
 	
 	public void cadastrarGrupo(Grupo grupo) {
-		gerenciador.cadastrarGrupo(grupo);
+		this.gerenciador.cadastrarGrupo(grupo);
 	}
 	
 	public void cadastrarAlunosEmGrupo(){
-		gerenciador.cadastrarAlunosEmGrupo();
+		this.gerenciador.cadastrarAlunosEmGrupo();
 	}
 	
 	public List<Coordenador> getListaDeCoordenadoresCriados(){
-		return gerenciador.getListaDeCoordenadoresCriados();
+		return this.gerenciador.getListaDeCoordenadoresCriados();
 	}
 	
 	public List<Aluno> getListaDeAlunosCriados(){
-		return gerenciador.getListaDeAlunosCriados();
+		return this.gerenciador.getListaDeAlunosCriados();
 	}
 
 	public List<Tarefa> getListaDeTarefas() {
-		return gerenciador.getListaDeTarefas();
+		return this.gerenciador.getListaDeTarefas();
 	}
 	
 	public Grupo pesquisarGrupo(String codigo){
-		return gerenciador.pesquisarGrupo(codigo);
+		return this.gerenciador.pesquisarGrupo(codigo);
 	}
 	
 	public Aluno pesquisaAluno(String matricula){
-		return gerenciador.pesquisaAluno(matricula);
+		return this.gerenciador.pesquisaAluno(matricula);
+	}
+	public Coordenador pesquisarCoordenador(String siape){
+		return this.gerenciador.pesquisarCoordenador(siape);
 	}
 	
 	public void removerAlunoPelaMatricula(String matricula)throws AlunoInexistenteException{
-		gerenciador.removerAlunoPelaMatricula(matricula);
+		this.gerenciador.removerAlunoPelaMatricula(matricula);
 	}
 	
 	public void removerCoordenador(Coordenador c){
-		gerenciador.removerCoordenador(c);
+		this.gerenciador.removerCoordenador(c);
 	}
 
 	public void cadastrarParticipante(Aluno a,Grupo g) {

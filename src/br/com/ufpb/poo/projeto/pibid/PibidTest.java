@@ -89,6 +89,12 @@ public class PibidTest {
 	}
 	
 	@Test
+	public void pesquisarCoordenadorTest(){
+		Coordenador c = new Coordenador("Ana Liz", "1241243");
+		pibid.cadastraCoordenador(c);
+		assertEquals(c, pibid.pesquisarCoordenador("1241243"));
+	}
+	@Test
 	public void pesquisaAlunoTest(){
 		Aluno a = new Aluno("Luana","81211067");
 		pibid.cadastrarAluno(a);

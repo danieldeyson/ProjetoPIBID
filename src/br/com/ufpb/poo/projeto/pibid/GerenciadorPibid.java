@@ -84,7 +84,7 @@ public class GerenciadorPibid{
 	public Aluno pesquisaAluno(String matricula){
 		
 		for ( Aluno a: alunos){
-			if(a.getMatricula().equalsIgnoreCase(matricula)){
+			if(a.getMatricula().equals(matricula)){
 				
 				return a;
 			}
@@ -92,13 +92,22 @@ public class GerenciadorPibid{
 		throw new AlunoInexistenteException ("Aluno Inexistente!");
 	}
 
-	public void removerAlunoPelaMatricula(String matricula) throws AlunoInexistenteException {
+	public Coordenador pesquisarCoordenador(String siape){
+		
+		for ( Coordenador c: this.coordenadores){
+			if ( c.getMatricula().equals(siape)){
+				return c;
+			}
+		}
+		throw new CoordenadorInexistenteException ("Coordenador Inexistente!");
+	}
+	public void removerAlunoPelaMatricula(String matricula) {
 		
 		boolean removeu=false;
 		
 		for (Aluno x: this.alunos){
 			
-			if (x.getMatricula().equalsIgnoreCase(matricula)){
+			if (x.getMatricula().equals(matricula)){
 				removeu = true;
 				alunos.remove(x);
 			}
@@ -106,7 +115,7 @@ public class GerenciadorPibid{
 			
 		}
 		if(removeu ==false){
-			throw new AlunoInexistenteException("Impossível remover,pois não existe!");
+			throw new AlunoInexistenteException("Impossível remover, pois não existe!");
 		}
 			
 	}
