@@ -13,6 +13,9 @@ public class Grupo {
 		this.codigoGrupo=codigoGrupo;
 		this.participantes = new LinkedList<Aluno>();
 	}
+	public Grupo(){
+		
+	}
 	public String getDescricao(){
 		String aluno = "";
 		String tar = "";

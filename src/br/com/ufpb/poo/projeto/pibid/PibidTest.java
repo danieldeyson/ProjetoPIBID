@@ -50,8 +50,8 @@ public class PibidTest {
 		pibid.cadastrarGrupo(g);
 		Aluno a = new Aluno("Deyvison","12234576");
 		Aluno a1 = new Aluno("Tayna","53344545");
-		g.cadastrarParticipante(a);
-		g.cadastrarParticipante(a1);
+		pibid.cadastrarParticipante(a,g);
+		pibid.cadastrarParticipante(a1,g);
 		List<Aluno> participantes = g.listParticipantes();
 		assertEquals(2, participantes.size());
 		assertEquals(a, participantes.get(0));
@@ -98,14 +98,14 @@ public class PibidTest {
 	}
 	
 	@Test(expected = Exception.class)
-	public void cadastraUmAlunoQueJaParticipeDoGrupo(){
+	public void cadastraUmAlunoQueJaParticipeDoGrupoTest(){
 		Aluno a = new Aluno("Deyvison", "66557788");
 		pibid.cadastrarAluno(a);
 		Aluno a1 = pibid.pesquisaAluno("66557788");
 		Tarefa t = new Tarefa("Planejar aula");
 		Grupo g = new Grupo(t,"123");
-		g.cadastrarParticipante(a1);
-		g.cadastrarParticipante(a1);
+		pibid.cadastrarParticipante(a1,g);
+		pibid.cadastrarParticipante(a1,g);
 		
 		
 	}

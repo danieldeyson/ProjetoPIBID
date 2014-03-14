@@ -5,6 +5,7 @@ public class Pibid {
 	
 	private GerenciadorPibid gerenciador;
 	
+	
 	public Pibid(){
 		this.gerenciador= new GerenciadorPibid();	
 	}
@@ -55,6 +56,11 @@ public class Pibid {
 	
 	public void removerCoordenador(Coordenador c){
 		gerenciador.removerCoordenador(c);
+	}
+
+	public void cadastrarParticipante(Aluno a,Grupo g) {
+		this.gerenciador.cadastrarParticipante(a,g);
+		
 	}
 
 	

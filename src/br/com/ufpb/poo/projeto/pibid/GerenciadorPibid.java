@@ -10,7 +10,7 @@ public class GerenciadorPibid{
 	private List<Coordenador> coordenadores=new LinkedList<Coordenador>();
 	private List<Grupo> grupos= new LinkedList<Grupo>();
 	private List<Tarefa> tarefas= new LinkedList<Tarefa>();
-
+	private Grupo grupo;
 
 	public void cadastraCoordenador(Coordenador coo1) throws CoordenadorExistenteException {
 		boolean existe=false;
@@ -100,5 +100,10 @@ public class GerenciadorPibid{
 	
 	public void removerCoordenador(Coordenador c){
 		this.coordenadores.remove(c);
+	}
+
+	public void cadastrarParticipante(Aluno a,Grupo g) {
+		g.cadastrarParticipante(a);
+		
 	}	
 }
