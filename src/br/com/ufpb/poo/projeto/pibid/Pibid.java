@@ -10,6 +10,10 @@ public class Pibid {
 		this.gerenciador= new GerenciadorPibid();	
 	}
 	
+	public void adicionarTarefaAoGrupo(Tarefa t, Grupo g){
+		this.gerenciador.adicionarTarefaAoGrupo(t, g);
+	}
+	
 	public void cadastraCoordenador(Coordenador coord){
 		this.gerenciador.cadastraCoordenador(coord);	
 	}

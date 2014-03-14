@@ -11,6 +11,18 @@ public class GerenciadorPibid{
 	private List<Grupo> grupos= new LinkedList<Grupo>();
 	private List<Tarefa> tarefas= new LinkedList<Tarefa>();
 	private Grupo grupo;
+	
+	public void adicionarTarefaAoGrupo(Tarefa t, Grupo g){
+		for(Grupo x: this.grupos){
+			if(x.getCodigoGrupo().equals(g.getCodigoGrupo())){
+				x.listTarefas().add(t);
+				break;
+				
+			}
+		}
+		
+		
+	}
 
 	public void cadastraCoordenador(Coordenador coo1) {
 		boolean existe=false;
@@ -69,7 +81,12 @@ public class GerenciadorPibid{
 	}
 	
 	public void cadastrarAlunosEmGrupo(){
-		//TERMINAR
+		Tarefa t = new Tarefa("Ministrar curso de Scratch");
+		Grupo g = new Grupo(t,"123");
+		Aluno a = new Aluno("Deyvison","12234576");
+		Aluno a1 = new Aluno("Tayna","53344545");
+		g.cadastrarParticipante(a);
+		g.cadastrarParticipante(a1);
 	}
 	
 	public Grupo pesquisarGrupo(String codigo){
@@ -110,6 +127,7 @@ public class GerenciadorPibid{
 			if (x.getMatricula().equals(matricula)){
 				removeu = true;
 				this.alunos.remove(x);
+				break;
 			}
 			
 			
@@ -128,6 +146,7 @@ public class GerenciadorPibid{
 			if(c.getMatricula().equals(siape)){
 				removeu = true;
 				this.coordenadores.remove(c);
+				break;
 			}
 		}
 		if(removeu == false){

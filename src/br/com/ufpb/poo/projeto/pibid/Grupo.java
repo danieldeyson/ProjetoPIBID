@@ -13,9 +13,7 @@ public class Grupo {
 		this.codigoGrupo=codigoGrupo;
 		this.participantes = new LinkedList<Aluno>();
 	}
-	public Grupo(){
-		
-	}
+	
 	public String getDescricao(){
 		String aluno = "";
 		String tar = "";
@@ -45,6 +43,9 @@ public class Grupo {
 	}
 	public List<Aluno> listParticipantes(){
 		return this.participantes;
+	}
+	public List<Tarefa> listTarefas(){
+		return this.tarefas;
 	}
 	
 	public Aluno pesquisaParticipante(String id){
