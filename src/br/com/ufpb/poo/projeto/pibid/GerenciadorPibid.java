@@ -134,7 +134,7 @@ public class GerenciadorPibid{
 			throw new CoordenadorInexistenteException("Impossível remover, pois não existe!");
 		}
 	}
-
+	
 	public void cadastrarParticipante(Aluno a,Grupo g) {
 		g.cadastrarParticipante(a);
 		

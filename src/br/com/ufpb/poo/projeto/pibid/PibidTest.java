@@ -115,17 +115,19 @@ public class PibidTest {
 		Aluno a1 = pibid.pesquisaAluno("1312312");
 	}
 	
-	@Test(expected = AlunoInexistenteException.class)
+	@Test
 	public void removerAlunoPelaMatriculaTest(){
 		Aluno a= new Aluno("Luana","81211021");
+		pibid.cadastrarAluno(a);
 		pibid.removerAlunoPelaMatricula("81211021");
 		List<Aluno> alunos = pibid.getListaDeAlunosCriados();
 		assertEquals(0,alunos.size());	
 	}
 	
-	@Test(expected = CoordenadorInexistenteException.class)
+	@Test
 	public void removerCoordenadorPeloSiapeTest(){
 		Coordenador c= new Coordenador("Ana Liz","12345678");
+		pibid.cadastraCoordenador(c);
 		pibid.removerCoordenadorPeloSiape("12345678");
 		List<Coordenador> coord = pibid.getListaDeCoordenadoresCriados();
 		assertEquals(0,coord.size());	
