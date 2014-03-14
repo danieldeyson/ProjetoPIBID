@@ -84,6 +84,18 @@ public class PibidTest {
 	}
 	
 	@Test
+	public void removerTarefaDoGrupo(){
+		Tarefa t = new Tarefa("Ministrar curso de Python");
+		pibid.cadastrarTarefa(t);
+		Grupo g = new Grupo(t,"12398473");
+		pibid.cadastrarGrupo(g);
+		pibid.removerTarefaDoGrupo(t,g);
+		List<Tarefa> tarefas = pibid.getListaDeTarefas();
+		assertEquals(0,tarefas.size());	
+		
+	}
+	
+	@Test
 	public void cadastrarGrupoTest(){
 		Tarefa tarefa = new Tarefa("Ministrar Aula de Python");
 		Grupo grupo = new Grupo(tarefa,"012");

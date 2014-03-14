@@ -14,6 +14,10 @@ public class Pibid {
 		this.gerenciador.adicionarTarefaAoGrupo(t, g);
 	}
 	
+	public void removerTarefaDoGrupo(Tarefa t, Grupo g){
+		this.gerenciador.removerTarefaDoGrupo(t, g);
+	}
+	
 	public void cadastraCoordenador(Coordenador coord){
 		this.gerenciador.cadastraCoordenador(coord);	
 	}

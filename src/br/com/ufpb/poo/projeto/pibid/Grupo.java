@@ -57,5 +57,14 @@ public class Grupo {
 		return null;
 	}
 	
+	public Tarefa pesquisaTarefa(String desc){
+		for(Tarefa x : this.tarefas){
+			if(x.toString().equalsIgnoreCase(desc)){
+				return x;
+			}
+		}
+		return null;
+	}
+	
 }
  

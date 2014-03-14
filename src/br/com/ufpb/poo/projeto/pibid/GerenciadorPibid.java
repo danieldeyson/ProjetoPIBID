@@ -19,8 +19,22 @@ public class GerenciadorPibid{
 				break;
 				
 			}
-		}
-		
+		}		
+	}
+	
+	public void removerTarefaDoGrupo(Tarefa t, Grupo g){
+		for(Grupo x: this.grupos){
+			if(x.getCodigoGrupo().equals(g.getCodigoGrupo())){
+				for(Tarefa y: this.tarefas){
+					if(y.getDescricao().equalsIgnoreCase(t.getDescricao())){
+						this.tarefas.remove(t);
+						
+					}
+				}
+				
+				
+			}
+		}	
 		
 	}
 
