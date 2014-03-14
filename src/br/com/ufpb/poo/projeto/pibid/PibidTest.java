@@ -14,12 +14,18 @@ public class PibidTest {
 	}
 	
 	@Test(expected = CoordenadorExistenteException.class)
-	public void testarCadastroCoordenadorDuplicadoTest() throws CoordenadorExistenteException{
+	public void testarCadastroCoordenadorDuplicadoTest() {
 		Coordenador coord = new Coordenador("Ana Liz","12345678");
 		Coordenador coord2 = new Coordenador("Ana Liz","12345678");
 		pibid.cadastraCoordenador(coord);
 		pibid.cadastraCoordenador(coord2);
 		
+	}
+	
+	@Test
+	public void CadastrarCoordenadorTest(){
+		Coordenador coord = new Coordenador("Ana Liz","12345678");
+		pibid.cadastraCoordenador(coord);
 	}
 	
 	
@@ -113,7 +119,6 @@ public class PibidTest {
 		Grupo g = new Grupo(t,"123");
 		pibid.cadastrarParticipante(a1,g);
 		pibid.cadastrarParticipante(a1,g);
-		
 		
 	}
 }

@@ -10,7 +10,7 @@ public class Pibid {
 		this.gerenciador= new GerenciadorPibid();	
 	}
 	
-	public void cadastraCoordenador(Coordenador coord) throws CoordenadorExistenteException{
+	public void cadastraCoordenador(Coordenador coord){
 		gerenciador.cadastraCoordenador(coord);	
 	}
 	
