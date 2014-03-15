@@ -165,6 +165,20 @@ public class PibidTest {
 	}
 	
 	@Test
+	public void verificarTamanhoDaListadeCoordenadoresTest(){
+		Coordenador coord = new Coordenador("Ana Liz","12345678");
+		Coordenador coord2 = new Coordenador("Flávia veloso","781454653");
+		Coordenador coord3 = new Coordenador("Ana Cristina","099877533");
+		Coordenador coord4 = new Coordenador("Maria Helena","85423923791");
+		pibid.cadastraCoordenador(coord);
+		pibid.cadastraCoordenador(coord2);
+		pibid.cadastraCoordenador(coord3);
+		pibid.cadastraCoordenador(coord4);
+		List<Coordenador> listaCoord=pibid.getListaDeCoordenadoresCriados();
+		assertEquals(4,listaCoord.size());	
+	}
+	
+	@Test
 	public void removerTarefaDoGrupoTest(){
 		Tarefa t = new Tarefa("Ministrar curso de Python");
 		pibid.cadastrarTarefa(t);
