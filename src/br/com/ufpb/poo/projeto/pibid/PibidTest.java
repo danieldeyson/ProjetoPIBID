@@ -311,4 +311,9 @@ public class PibidTest {
 		assertEquals(0,list.size());
 	}
 	
+	@Test(expected = MaterialInexistenteException.class)
+	public void removerMaterialInexistenteTest(){
+		pibid.removerMaterial("0123");
+	}
+	
 }
