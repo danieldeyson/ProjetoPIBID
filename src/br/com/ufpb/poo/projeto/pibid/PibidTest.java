@@ -323,4 +323,11 @@ public class PibidTest {
 		Material retorno = pibid.pesquisarMaterial("0012");
 		assertEquals(m,retorno);
 	}
+	
+	@Test(expected = MaterialInexistenteException.class)
+	public void pesquisarMaterialInexistenteTest(){
+		Material m = new Material ("Cadernos","1212",1);
+		pibid.cadastrarMaterial(m);
+		pibid.pesquisarMaterial("0102");
+	}
 }
