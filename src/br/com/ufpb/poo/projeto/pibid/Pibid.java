@@ -4,9 +4,11 @@ import java.util.List;
 public class Pibid {
 	
 	private GerenciadorPibid gerenciador;
+	private GerenciadorDeMaterial gerenciadorMaterial;
 	
 	public Pibid(){
-		this.gerenciador= new GerenciadorPibid();	
+		this.gerenciador= new GerenciadorPibid();
+		this.gerenciadorMaterial = new GerenciadorDeMaterial();
 	}
 	
 	//PARTE DE CADASTROS
@@ -34,6 +36,10 @@ public class Pibid {
 		this.gerenciador.cadastrarParticipante(a,g);
 		
 	}
+	
+	public void cadastrarMaterial(Material m){
+		this.gerenciadorMaterial.cadastrarMaterial(m);
+	}
 
 	//PARTE DE ADICIONAR
 	public void adicionarTarefaAoGrupo(Tarefa t, Grupo g){
@@ -59,6 +65,10 @@ public class Pibid {
 	
 	public List<Tarefa> getListaDeTarefasCadastradasEmUmGrupo(Grupo g) {
 		return this.gerenciador.getListaDeTarefasCadastradasEmUmGrupo(g);
+	}
+	
+	public List <Material> getListaDeMateriais (){
+		return this.gerenciadorMaterial.getListaDeMateriais();
 	}
 
 	// PARTE DE PESQUISAS

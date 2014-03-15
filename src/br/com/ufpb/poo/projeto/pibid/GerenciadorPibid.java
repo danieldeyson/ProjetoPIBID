@@ -2,15 +2,12 @@ package br.com.ufpb.poo.projeto.pibid;
 import java.util.LinkedList;
 import java.util.List;
 
-import org.junit.Test;
-
 public class GerenciadorPibid{
 	
 	private List<Aluno> alunos=new LinkedList<Aluno>();
 	private List<Coordenador> coordenadores=new LinkedList<Coordenador>();
 	private List<Grupo> grupos= new LinkedList<Grupo>();
 	private List<Tarefa> tarefas= new LinkedList<Tarefa>();
-	private Grupo grupo;
 	
 	//PARTE DE CADASTRO
 	public void cadastraAluno(Aluno aluno){

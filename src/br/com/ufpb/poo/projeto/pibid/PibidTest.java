@@ -17,6 +17,8 @@ public class PibidTest {
 	public void CadastrarCoordenadorTest(){
 		Coordenador coord = new Coordenador("Ana Liz","12345678");
 		pibid.cadastraCoordenador(coord);
+		List <Coordenador> list = pibid.getListaDeCoordenadoresCriados();
+		assertEquals(1,list.size());
 	}
 	
 	@Test(expected = CoordenadorExistenteException.class)
@@ -41,7 +43,7 @@ public class PibidTest {
 	public void cadastraAlunoTest(){
 		Aluno aluno= new Aluno("Luana Costa","81211021");
 		pibid.cadastrarAluno(aluno);
-		List<Aluno> list=pibid.getListaDeAlunosCriados();
+		List<Aluno> list = pibid.getListaDeAlunosCriados();
 		assertEquals(1,list.size());
 		assertEquals(aluno,list.get(0));
 	}
@@ -290,6 +292,14 @@ public class PibidTest {
 	@Test(expected = CoordenadorInexistenteException.class)
 	public void removerCoordenadorInexistenteTest(){
 		pibid.removerCoordenadorPeloSiape("81241432");
+	}
+	
+	@Test
+	public void cadastrarMaterial(){
+		Material m = new Material ("Canetas","0112",10);
+		pibid.cadastrarMaterial(m);
+		List <Material> list = pibid.getListaDeMateriais();
+		assertEquals(1,list.size());
 	}
 	
 }
