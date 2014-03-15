@@ -185,6 +185,26 @@ public class PibidTest {
 		assertEquals(0,alunos.size());	
 	}
 	
+	@Test
+	public void removerAlunoPelaMatriculaSegundoTest(){
+		Aluno a= new Aluno("Luana","813521");
+		Aluno a2= new Aluno("Rhaleff","8981154");
+		Aluno a3= new Aluno("Marina","083856546");
+		Aluno a4= new Aluno("Deyvison","71453346");
+		Aluno a5= new Aluno("Elze","3275456");
+		Aluno a6= new Aluno("Rivan","00824625");
+		pibid.cadastrarAluno(a);
+		pibid.cadastrarAluno(a2);
+		pibid.cadastrarAluno(a3);
+		pibid.cadastrarAluno(a4);
+		pibid.cadastrarAluno(a5);
+		pibid.cadastrarAluno(a6);
+		pibid.removerAlunoPelaMatricula(a5.getMatricula());
+		pibid.removerAlunoPelaMatricula(a3.getMatricula());
+		List<Aluno> listaAlunos = pibid.getListaDeAlunosCriados();
+		assertEquals(4,listaAlunos.size());
+	}
+	
 	@Test(expected = AlunoInexistenteException.class)
 	public void removerAlunoInexistenteTest(){
 		pibid.removerAlunoPelaMatricula("123456567");
