@@ -143,6 +143,15 @@ public class PibidTest {
 		Tarefa retorno=pibid.pesquisarTarefa(tarefa);
 		assertEquals(tarefa,retorno);	
 	}
+	@Test
+	public void pesquisarTarefaInexistenteTest() {
+		Tarefa t = new Tarefa("Elaborar roteiros");
+		Tarefa t2= new Tarefa("Organizar pastas");
+		pibid.cadastrarTarefa(t);
+		List<Tarefa> tarefas = pibid.getListaDeTarefas();
+		assertNull(pibid.pesquisarTarefa(t2));
+		assertEquals(1,tarefas.size());
+	}
 	
 	@Test
 	public void removerTarefaDoGrupoTest(){
