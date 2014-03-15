@@ -1,7 +1,6 @@
 package br.com.ufpb.poo.projeto.pibid;
 
 import static org.junit.Assert.*;
-import java.util.LinkedList;
 import java.util.List;
 import org.junit.Before;
 import org.junit.Test;
@@ -135,7 +134,7 @@ public class PibidTest {
 	public void pesquisarAlunoInexistenteTest(){
 		Aluno a = new Aluno("Rhaleff","81211133");
 		pibid.cadastrarAluno(a);
-		Aluno a1 = pibid.pesquisaAluno("1312312");
+		pibid.pesquisaAluno("1312312");
 	}
 	
 	@Test
@@ -167,12 +166,11 @@ public class PibidTest {
 		Tarefa retorno=pibid.pesquisarTarefa("765");
 		assertEquals(tarefa,retorno);	
 	}
+	
 	@Test
 	public void pesquisarTarefaInexistenteTest() {
 		Tarefa t = new Tarefa("Elaborar roteiros","9234");
-		Tarefa t2= new Tarefa("Organizar pastas","876");
 		pibid.cadastrarTarefa(t);
-		List<Tarefa> tarefas = pibid.getListaDeTarefas();
 		Tarefa tarefa = pibid.pesquisarTarefa("876");
 		assertNull(tarefa);
 	}
