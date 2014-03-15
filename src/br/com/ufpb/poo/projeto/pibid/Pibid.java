@@ -52,6 +52,10 @@ public class Pibid {
 	public List<Tarefa> getListaDeTarefas() {
 		return this.gerenciador.getListaDeTarefas();
 	}
+	
+	public List<Grupo> getListaDeGrupo(){
+		return this.gerenciador.getListaDeGrupos();
+	}
 
 	// PARTE DE PESQUISAS
 	public Grupo pesquisarGrupo(String codigo){

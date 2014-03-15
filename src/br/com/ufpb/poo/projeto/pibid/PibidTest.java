@@ -95,6 +95,7 @@ public class PibidTest {
 	@Test
 	public void cadastrarGrupoTest(){
 		Tarefa tarefa = new Tarefa("Ministrar Aula de Python");
+		pibid.cadastrarTarefa(tarefa);
 		Grupo grupo = new Grupo(tarefa,"012");
 		pibid.cadastrarGrupo(grupo);
 		assertEquals(grupo,pibid.pesquisarGrupo("012"));
@@ -103,9 +104,11 @@ public class PibidTest {
 	@Test(expected = GrupoJáexisteException.class)
 	public void cadastraGrupoComMesmoCodigoTest(){
 		Tarefa tarefa = new Tarefa("Produzir materiais");
+		pibid.cadastrarTarefa(tarefa);
 		Grupo grupo = new Grupo(tarefa,"007");
 		pibid.cadastrarGrupo(grupo);
 		Tarefa tarefa2 = new Tarefa("Elaborar testes no jogo de raciocio logico");
+		pibid.cadastrarTarefa(tarefa2);
 		Grupo grupo2 = new Grupo(tarefa,"007");
 		pibid.cadastrarGrupo(grupo2);
 	}
@@ -185,6 +188,35 @@ public class PibidTest {
 		pibid.cadastraCoordenador(coord4);
 		List<Coordenador> listaCoord=pibid.getListaDeCoordenadoresCriados();
 		assertEquals(4,listaCoord.size());	
+	}
+	
+	@Test
+	public void verificarTamanhoDaListadeTarefasTest(){
+		Tarefa t= new Tarefa("Pesquisar sobre HTML");
+		pibid.cadastrarTarefa(t);
+		Tarefa t2= new Tarefa("Aulas de HTML");
+		pibid.cadastrarTarefa(t2);
+		Tarefa t3= new Tarefa("Entregar relatórios sobre a aula de HTML");
+		List<Tarefa> listTarefa = pibid.getListaDeTarefas();
+		assertEquals(2,listTarefa.size());
+	}
+	
+	@Test
+	public void verificarTamanhoDaListadeGruposTest(){
+		Tarefa t= new Tarefa("Pesquisar sobre HTML");
+		pibid.cadastrarTarefa(t);
+		Grupo grupo = new Grupo(t,"1");
+		pibid.cadastrarGrupo(grupo);
+		Tarefa t2= new Tarefa("Aulas de HTML");
+		pibid.cadastrarTarefa(t2);
+		Grupo grupo2 = new Grupo(t2,"2");
+		pibid.cadastrarGrupo(grupo2);
+		Tarefa t3= new Tarefa("Entregar relatórios sobre HTML");
+		pibid.cadastrarTarefa(t3);
+		Grupo grupo3 = new Grupo(t3,"3");
+		pibid.cadastrarGrupo(grupo3);
+		List<Grupo> listGrupo = pibid.getListaDeGrupo();
+		assertEquals(3,listGrupo.size());	
 	}
 	
 	@Test
