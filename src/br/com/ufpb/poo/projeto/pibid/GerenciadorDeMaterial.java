@@ -27,4 +27,13 @@ public class GerenciadorDeMaterial {
 		}
 	}
 	
+	public Material pesquisarMaterial(String codigoMaterial){
+		for(Material m: this.materiais){
+			if(m.getCodMaterial().equals(codigoMaterial)){
+				return m;
+			}
+		}
+		throw new MaterialInexistenteException ("Material Inexistente!");		
+	}
+	
 }

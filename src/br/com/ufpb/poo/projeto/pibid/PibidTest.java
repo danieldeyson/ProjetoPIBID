@@ -316,4 +316,11 @@ public class PibidTest {
 		pibid.removerMaterial("0123");
 	}
 	
+	@Test
+	public void pesquisarMaterialTest(){
+		Material m = new Material ("Borrachas","0012",11);
+		pibid.cadastrarMaterial(m);
+		Material retorno = pibid.pesquisarMaterial("0012");
+		assertEquals(m,retorno);
+	}
 }

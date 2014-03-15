@@ -87,6 +87,10 @@ public class Pibid {
 	public Tarefa pesquisarTarefa(String codTarefa){
 		return this.gerenciador.pesquisarTarefa(codTarefa);
 	}
+	
+	public Material pesquisarMaterial (String codMaterial){
+		return this.gerenciadorMaterial.pesquisarMaterial(codMaterial);
+	}
 
 	// PARTE DE REMOÇÕES
 	public void removerAlunoPelaMatricula(String matricula){
