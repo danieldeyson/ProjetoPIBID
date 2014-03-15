@@ -57,8 +57,8 @@ public class Pibid {
 		return this.gerenciador.getListaDeGrupos();
 	}
 	
-	public List<Tarefa> getListadetarefasCadastradasEmUmGrupo(){
-		return this.getListadetarefasCadastradasEmUmGrupo();
+	public List<Tarefa> getListaDeTarefasCadastradasEmUmGrupo(Grupo g) {
+		return this.gerenciador.getListaDeTarefasCadastradasEmUmGrupo(g);
 	}
 
 	// PARTE DE PESQUISAS
@@ -79,10 +79,6 @@ public class Pibid {
 	}
 
 	// PARTE DE REMOÇÕES
-	public void removerTarefaDoGrupo(String codTarefa, String codGrupo){
-		this.gerenciador.removerTarefaDoGrupo(codTarefa, codGrupo);
-	}
-	
 	public void removerAlunoPelaMatricula(String matricula){
 		this.gerenciador.removerAlunoPelaMatricula(matricula);
 	}
@@ -92,6 +88,9 @@ public class Pibid {
 	}
 	public void removerTarefa(String cod) {
 		this.gerenciador.removerTarefa(cod);
+	}
+	public void removerTarefaDoGrupo(Tarefa t, Grupo g){
+		this.gerenciador.removerTarefaDoGrupo(t,g);
 	}
 
 }

@@ -236,12 +236,14 @@ public class PibidTest {
 	public void removerTarefaDoGrupoTest(){
 		Tarefa t = new Tarefa("Ministrar curso de Python","478");
 		pibid.cadastrarTarefa(t);
-		Grupo g = new Grupo(t,"12398473");
+		Grupo g = new Grupo("12398473");
 		pibid.cadastrarGrupo(g);
-		pibid.adicionarTarefaAoGrupo(t, g);
-		pibid.removerTarefaDoGrupo("478","12398473");
-		List<Tarefa> tarefas = pibid.getListadetarefasCadastradasEmUmGrupo();
-		assertEquals(0,tarefas.size());	
+		Tarefa t1 = pibid.pesquisarTarefa("478");
+		Grupo g1 = pibid.pesquisarGrupo("12398473");
+		pibid.adicionarTarefaAoGrupo(t1, g1);
+		pibid.removerTarefaDoGrupo(t1, g1);
+		List<Tarefa> tarefas = pibid.getListaDeTarefasCadastradasEmUmGrupo(g);
+		assertEquals(0, tarefas.size());
 	}
 	
 	@Test

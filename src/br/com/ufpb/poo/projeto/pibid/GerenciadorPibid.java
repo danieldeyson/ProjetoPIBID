@@ -81,13 +81,7 @@ public class GerenciadorPibid{
 	
     //PARTE DE ADICIONAR
 	public void adicionarTarefaAoGrupo(Tarefa t, Grupo g){
-		for(Grupo x: this.grupos){
-			if(x.getCodigoGrupo().equals(g.getCodigoGrupo())){
-				x.listTarefas().add(t);
-				break;
-				
-			}
-		}		
+		g.addTarefa(t);
 	}
 	
 	// PARTE DE GETS
@@ -106,9 +100,11 @@ public class GerenciadorPibid{
 	public List<Grupo> getListaDeGrupos(){
 		return this.grupos;
 	}
+
+	public List<Tarefa> getListaDeTarefasCadastradasEmUmGrupo(Grupo g1) {
+		return g1.listTarefas();
 	
-	public List<Tarefa> getListadetarefasCadastradasEmUmGrupo(){
-		return grupo.listTarefas();
+		
 	}
 	
 	//PARTE DE PESQUISAS
@@ -216,6 +212,10 @@ public class GerenciadorPibid{
 		if(!removeu){
 			throw new RuntimeException("ERRO!");
 		}
+		
+	}
+	public void removerTarefaDoGrupo(Tarefa t, Grupo g){
+		g.removerTarefa(t);
 		
 	}
 		

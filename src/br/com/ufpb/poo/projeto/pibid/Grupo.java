@@ -13,7 +13,20 @@ public class Grupo {
 		this.codigoGrupo=codigoGrupo;
 		this.participantes = new LinkedList<Aluno>();
 	}
-	
+	public Grupo(String codigoGrupo){
+		tarefas = new LinkedList<Tarefa>();
+		this.codigoGrupo=codigoGrupo;
+		this.participantes = new LinkedList<Aluno>();
+	}
+	public void removerTarefa(Tarefa t) {
+		this.tarefas.remove(t);
+				
+		
+	}
+	public void addTarefa(Tarefa t) {
+		this.tarefas.add(t);
+		
+	}
 	public String getDescricao(){
 		String aluno = "";
 		String tar = "";
