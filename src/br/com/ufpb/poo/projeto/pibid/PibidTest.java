@@ -21,12 +21,21 @@ public class PibidTest {
 	}
 	
 	@Test(expected = CoordenadorExistenteException.class)
-	public void testarCadastroCoordenadorDuplicadoTest() {
+	public void cadastroCoordenadorDuplicadoTest() {
 		Coordenador coord = new Coordenador("Ana Liz","12345678");
 		Coordenador coord2 = new Coordenador("Ana Liz","12345678");
 		pibid.cadastraCoordenador(coord);
 		pibid.cadastraCoordenador(coord2);
-		
+	}
+	
+	@Test(expected = CoordenadorExistenteException.class)
+	public void cadastrarCoordenadoresComMesmoSiapeTest(){
+		Coordenador coord = new Coordenador("Ana Liz","12345678");
+		Coordenador coord2 = new Coordenador("Flavia Veloso","12345678");
+		Coordenador coord3 = new Coordenador("Ana Cristina","12345678");
+		pibid.cadastraCoordenador(coord);
+		pibid.cadastraCoordenador(coord2);
+		pibid.cadastraCoordenador(coord3);
 	}
 	
 	@Test
