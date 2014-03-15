@@ -199,5 +199,20 @@ public class GerenciadorPibid{
 		}	
 		
 	}
+	
+	public void removerTarefa(String cod) {
+		boolean removeu = false;
+		for(Tarefa t : this.tarefas){
+			if(t.getcodDaTarefa().equals(cod)){
+				this.tarefas.remove(t);
+				removeu = true;
+				break;
+			}
+		}
+		if(!removeu){
+			throw new RuntimeException("ERRO!");
+		}
+		
+	}
 		
 }

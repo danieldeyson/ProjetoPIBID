@@ -86,6 +86,9 @@ public class Pibid {
 	public void removerCoordenadorPeloSiape(String siape){
 		this.gerenciador.removerCoordenadorPeloSiape(siape);
 	}
+	public void removerTarefa(String cod) {
+		this.gerenciador.removerTarefa(cod);
+	}
 
 }
  

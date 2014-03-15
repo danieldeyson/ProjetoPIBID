@@ -173,8 +173,8 @@ public class PibidTest {
 		Tarefa t2= new Tarefa("Organizar pastas","876");
 		pibid.cadastrarTarefa(t);
 		List<Tarefa> tarefas = pibid.getListaDeTarefas();
-		assertNull(pibid.pesquisarTarefa("876"));
-		assertEquals(1,tarefas.size());
+		Tarefa tarefa = pibid.pesquisarTarefa("876");
+		assertNull(tarefa);
 	}
 	
 	@Test
@@ -198,6 +198,8 @@ public class PibidTest {
 		Tarefa t2= new Tarefa("Aulas de HTML","02");
 		pibid.cadastrarTarefa(t2);
 		Tarefa t3= new Tarefa("Entregar relatórios sobre a aula de HTML","03");
+		pibid.cadastrarTarefa(t3);
+		pibid.removerTarefa("03");
 		List<Tarefa> listTarefa = pibid.getListaDeTarefas();
 		assertEquals(2,listTarefa.size());
 	}
