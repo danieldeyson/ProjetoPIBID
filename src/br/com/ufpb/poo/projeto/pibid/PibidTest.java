@@ -1,4 +1,5 @@
 package br.com.ufpb.poo.projeto.pibid;
+
 import static org.junit.Assert.*;
 import java.util.LinkedList;
 import java.util.List;
@@ -13,21 +14,29 @@ public class PibidTest {
 		this.pibid = new Pibid();
 	}
 	
-	@Test(expected = CoordenadorExistenteException.class)
-	public void testarCadastroCoordenadorDuplicadoTest() {
-		Coordenador coord = new Coordenador("Ana Liz","12345678");
-		Coordenador coord2 = new Coordenador("Ana Liz","12345678");
-		pibid.cadastraCoordenador(coord);
-		pibid.cadastraCoordenador(coord2);
-		
-	}
-	
 	@Test
 	public void CadastrarCoordenadorTest(){
 		Coordenador coord = new Coordenador("Ana Liz","12345678");
 		pibid.cadastraCoordenador(coord);
 	}
 	
+	@Test(expected = CoordenadorExistenteException.class)
+	public void cadastroCoordenadorDuplicadoTest() {
+		Coordenador coord = new Coordenador("Ana Liz","12345678");
+		Coordenador coord2 = new Coordenador("Ana Liz","12345678");
+		pibid.cadastraCoordenador(coord);
+		pibid.cadastraCoordenador(coord2);
+	}
+	
+	@Test(expected = CoordenadorExistenteException.class)
+	public void cadastrarCoordenadoresComMesmoSiapeTest(){
+		Coordenador coord = new Coordenador("Ana Liz","12345678");
+		Coordenador coord2 = new Coordenador("Flavia Veloso","12345678");
+		Coordenador coord3 = new Coordenador("Ana Cristina","12345678");
+		pibid.cadastraCoordenador(coord);
+		pibid.cadastraCoordenador(coord2);
+		pibid.cadastraCoordenador(coord3);
+	}
 	
 	@Test
 	public void cadastraAlunoTest(){
@@ -48,7 +57,7 @@ public class PibidTest {
 	
 	@Test
 	public void cadastrarTarefasTest(){
-		Tarefa tarefa=new Tarefa("Ministrar aula de HTML");
+		Tarefa tarefa=new Tarefa("Ministrar aula de HTML","01");
 		Grupo g = new Grupo(tarefa,"01");
 		pibid.cadastrarTarefa(tarefa);
 		pibid.cadastrarGrupo(g);
@@ -59,7 +68,7 @@ public class PibidTest {
 	
 	@Test 
 	public void cadastrarAlunosEmGrupoTest(){
-		Tarefa t = new Tarefa("Ministrar curso de Scratch");
+		Tarefa t = new Tarefa("Ministrar curso de Scratch","987");
 		Grupo g = new Grupo(t,"123");
 		pibid.cadastrarGrupo(g);
 		Aluno a = new Aluno("Deyvison","12234576");
@@ -72,9 +81,41 @@ public class PibidTest {
 		assertEquals(a1, participantes.get(1));	
 	}
 	
+	@Test(expected = Exception.class)
+	public void cadastraUmAlunoQueJaParticipeDoGrupoTest(){
+		Aluno a = new Aluno("Rodrigo", "66557788");
+		pibid.cadastrarAluno(a);
+		Aluno a1 = pibid.pesquisaAluno("66557788");
+		Tarefa t = new Tarefa("Planejar aula","32");
+		Grupo g = new Grupo(t,"123");
+		pibid.cadastrarParticipante(a1,g);
+		pibid.cadastrarParticipante(a1,g);
+	}
+	
+	@Test
+	public void cadastrarGrupoTest(){
+		Tarefa tarefa = new Tarefa("Ministrar Aula de Python","79");
+		pibid.cadastrarTarefa(tarefa);
+		Grupo grupo = new Grupo(tarefa,"012");
+		pibid.cadastrarGrupo(grupo);
+		assertEquals(grupo,pibid.pesquisarGrupo("012"));
+	}
+	
+	@Test(expected = GrupoJaexisteException.class)
+	public void cadastraGrupoComMesmoCodigoTest(){
+		Tarefa tarefa = new Tarefa("Produzir materiais","123");
+		pibid.cadastrarTarefa(tarefa);
+		Grupo grupo = new Grupo(tarefa,"007");
+		pibid.cadastrarGrupo(grupo);
+		Tarefa tarefa2 = new Tarefa("Elaborar testes no jogo de raciocio logico","098");
+		pibid.cadastrarTarefa(tarefa2);
+		Grupo grupo2 = new Grupo(tarefa,"007");
+		pibid.cadastrarGrupo(grupo2);
+	}
+	
 	@Test
 	public void adicionarTarefasAoGrupoTest(){
-		Tarefa t = new Tarefa("Ministrar curso de Python");
+		Tarefa t = new Tarefa("Ministrar curso de Python","345");
 		pibid.cadastrarTarefa(t);
 		Grupo g = new Grupo(t,"12398473");
 		pibid.cadastrarGrupo(g);
@@ -84,28 +125,22 @@ public class PibidTest {
 	}
 	
 	@Test
-	public void removerTarefaDoGrupo(){
-		Tarefa t = new Tarefa("Ministrar curso de Python");
-		pibid.cadastrarTarefa(t);
-		Grupo g = new Grupo(t,"12398473");
-		pibid.cadastrarGrupo(g);
-		pibid.removerTarefaDoGrupo(t,g);
-		List<Tarefa> tarefas = pibid.getListaDeTarefas();
-		assertEquals(0,tarefas.size());	
-		
+	public void pesquisaAlunoTest(){
+		Aluno a = new Aluno("Luana","81211067");
+		pibid.cadastrarAluno(a);
+		assertEquals(a,pibid.pesquisaAluno("81211067"));	
 	}
 	
-	@Test
-	public void cadastrarGrupoTest(){
-		Tarefa tarefa = new Tarefa("Ministrar Aula de Python");
-		Grupo grupo = new Grupo(tarefa,"012");
-		pibid.cadastrarGrupo(grupo);
-		assertEquals(grupo,pibid.pesquisarGrupo("012"));
+	@Test(expected = AlunoInexistenteException.class)
+	public void pesquisarAlunoInexistenteTest(){
+		Aluno a = new Aluno("Rhaleff","81211133");
+		pibid.cadastrarAluno(a);
+		Aluno a1 = pibid.pesquisaAluno("1312312");
 	}
 	
 	@Test
 	public void pesquisarGrupoInexistenteTest(){
-		Tarefa t = new Tarefa("Ministrar curso de HTML");
+		Tarefa t = new Tarefa("Ministrar curso de HTML","456");
 		Grupo g = new Grupo(t,"123");
 		pibid.cadastrarGrupo(g);
 		assertNull(pibid.pesquisarGrupo("321"));
@@ -126,17 +161,85 @@ public class PibidTest {
 	}
 	
 	@Test
-	public void pesquisaAlunoTest(){
-		Aluno a = new Aluno("Luana","81211067");
-		pibid.cadastrarAluno(a);
-		assertEquals(a,pibid.pesquisaAluno("81211067"));	
+	public void pesquisarTarefaTest(){
+		Tarefa tarefa=new Tarefa("Ministrar aula de HTML","765");
+		pibid.cadastrarTarefa(tarefa);
+		Tarefa retorno=pibid.pesquisarTarefa("765");
+		assertEquals(tarefa,retorno);	
+	}
+	@Test
+	public void pesquisarTarefaInexistenteTest() {
+		Tarefa t = new Tarefa("Elaborar roteiros","9234");
+		Tarefa t2= new Tarefa("Organizar pastas","876");
+		pibid.cadastrarTarefa(t);
+		List<Tarefa> tarefas = pibid.getListaDeTarefas();
+		assertNull(pibid.pesquisarTarefa("876"));
+		assertEquals(1,tarefas.size());
 	}
 	
-	@Test(expected = AlunoInexistenteException.class)
-	public void pesquisarAlunoInexistenteTest(){
-		Aluno a = new Aluno("Marina","81211133");
+	@Test
+	public void verificarTamanhoDaListadeCoordenadoresTest(){
+		Coordenador coord = new Coordenador("Ana Liz","12345678");
+		Coordenador coord2 = new Coordenador("Flávia veloso","781454653");
+		Coordenador coord3 = new Coordenador("Ana Cristina","099877533");
+		Coordenador coord4 = new Coordenador("Maria Helena","85423923791");
+		pibid.cadastraCoordenador(coord);
+		pibid.cadastraCoordenador(coord2);
+		pibid.cadastraCoordenador(coord3);
+		pibid.cadastraCoordenador(coord4);
+		List<Coordenador> listaCoord=pibid.getListaDeCoordenadoresCriados();
+		assertEquals(4,listaCoord.size());	
+	}
+	
+	@Test
+	public void verificarTamanhoDaListadeTarefasTest(){
+		Tarefa t= new Tarefa("Pesquisar sobre HTML","01");
+		pibid.cadastrarTarefa(t);
+		Tarefa t2= new Tarefa("Aulas de HTML","02");
+		pibid.cadastrarTarefa(t2);
+		Tarefa t3= new Tarefa("Entregar relatórios sobre a aula de HTML","03");
+		List<Tarefa> listTarefa = pibid.getListaDeTarefas();
+		assertEquals(2,listTarefa.size());
+	}
+	
+	@Test
+	public void verificarTamanhoDaListadeGruposTest(){
+		Tarefa t= new Tarefa("Pesquisar sobre HTML","012");
+		pibid.cadastrarTarefa(t);
+		Grupo grupo = new Grupo(t,"1");
+		pibid.cadastrarGrupo(grupo);
+		Tarefa t2= new Tarefa("Aulas de HTML","345");
+		pibid.cadastrarTarefa(t2);
+		Grupo grupo2 = new Grupo(t2,"2");
+		pibid.cadastrarGrupo(grupo2);
+		Tarefa t3= new Tarefa("Entregar relatórios sobre HTML","098");
+		pibid.cadastrarTarefa(t3);
+		Grupo grupo3 = new Grupo(t3,"3");
+		pibid.cadastrarGrupo(grupo3);
+		List<Grupo> listGrupo = pibid.getListaDeGrupo();
+		assertEquals(3,listGrupo.size());	
+	}
+	
+	@Test
+	public void verificarTamanhoDaListadeAlunosTest(){
+		Aluno a= new Aluno ("Luana","12132456");
+		Aluno b= new Aluno("Rhaleff","098876786");
 		pibid.cadastrarAluno(a);
-		Aluno a1 = pibid.pesquisaAluno("1312312");
+		pibid.cadastrarAluno(b);
+		List<Aluno> listaAluno=pibid.getListaDeAlunosCriados();
+		assertEquals(2,listaAluno.size());	
+	}
+	
+	@Test
+	public void removerTarefaDoGrupoTest(){
+		Tarefa t = new Tarefa("Ministrar curso de Python","478");
+		pibid.cadastrarTarefa(t);
+		Grupo g = new Grupo(t,"12398473");
+		pibid.cadastrarGrupo(g);
+		pibid.removerTarefaDoGrupo("478","12398473");
+		List<Tarefa> tarefas = pibid.getListaDeTarefas();
+		assertEquals(0,tarefas.size());	
+		
 	}
 	
 	@Test
@@ -146,6 +249,34 @@ public class PibidTest {
 		pibid.removerAlunoPelaMatricula("81211021");
 		List<Aluno> alunos = pibid.getListaDeAlunosCriados();
 		assertEquals(0,alunos.size());	
+	}
+	
+	@Test
+	public void removerAlunoPelaMatriculaSegundoTest(){
+		Aluno a= new Aluno("Luana","813521");
+		Aluno a2= new Aluno("Rhaleff","8981154");
+		Aluno a3= new Aluno("Marina","083856546");
+		Aluno a4= new Aluno("Deyvison","71453346");
+		Aluno a5= new Aluno("Elze","3275456");
+		Aluno a6= new Aluno("Rivan","00824625");
+		pibid.cadastrarAluno(a);
+		pibid.cadastrarAluno(a2);
+		pibid.cadastrarAluno(a3);
+		pibid.cadastrarAluno(a4);
+		pibid.cadastrarAluno(a5);
+		pibid.cadastrarAluno(a6);
+		pibid.removerAlunoPelaMatricula(a5.getMatricula());
+		pibid.removerAlunoPelaMatricula(a3.getMatricula());
+		List<Aluno> listaAlunos = pibid.getListaDeAlunosCriados();
+		assertEquals(4,listaAlunos.size());
+	}
+	
+	@Test(expected = AlunoInexistenteException.class)
+	public void removerAlunoInexistenteTest(){
+		pibid.removerAlunoPelaMatricula("123456567");
+		List<Aluno> aluno = pibid.getListaDeAlunosCriados();
+		assertEquals(0,aluno.size());
+		
 	}
 	
 	@Test
@@ -164,14 +295,5 @@ public class PibidTest {
 		assertEquals(0,coord.size());
 	}
 	
-	@Test(expected = Exception.class)
-	public void cadastraUmAlunoQueJaParticipeDoGrupoTest(){
-		Aluno a = new Aluno("Deyvison", "66557788");
-		pibid.cadastrarAluno(a);
-		Aluno a1 = pibid.pesquisaAluno("66557788");
-		Tarefa t = new Tarefa("Planejar aula");
-		Grupo g = new Grupo(t,"123");
-		pibid.cadastrarParticipante(a1,g);
-		pibid.cadastrarParticipante(a1,g);
-	}
+	
 }

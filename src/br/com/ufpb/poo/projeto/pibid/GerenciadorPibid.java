@@ -12,52 +12,7 @@ public class GerenciadorPibid{
 	private List<Tarefa> tarefas= new LinkedList<Tarefa>();
 	private Grupo grupo;
 	
-	public void adicionarTarefaAoGrupo(Tarefa t, Grupo g){
-		for(Grupo x: this.grupos){
-			if(x.getCodigoGrupo().equals(g.getCodigoGrupo())){
-				x.listTarefas().add(t);
-				break;
-				
-			}
-		}		
-	}
-	
-	public void removerTarefaDoGrupo(Tarefa t, Grupo g){
-		for(Grupo x: this.grupos){
-			if(x.getCodigoGrupo().equals(g.getCodigoGrupo())){
-				for(Tarefa y: this.tarefas){
-					if(y.getDescricao().equalsIgnoreCase(t.getDescricao())){
-						this.tarefas.remove(t);
-						
-					}
-				}
-				
-				
-			}
-		}	
-		
-	}
-
-	public void cadastraCoordenador(Coordenador coo1) {
-		boolean existe=false;
-		for (Coordenador c: this.coordenadores){
-			if(c.getMatricula().equals(coo1.getMatricula())){
-				existe=true;
-				break;
-			}
-		}
-		if(existe==false){
-			this.coordenadores.add(coo1);
-		}
-		else{
-			throw new CoordenadorExistenteException("Coordenador Existente!");
-		}
-	}
-	
-	public List<Coordenador> getListaDeCoordenadoresCriados(){
-		return this.coordenadores;	
-	}
-	
+	//PARTE DE CADASTRO
 	public void cadastraAluno(Aluno aluno){
 		boolean existe=false;
 		for (Aluno a: this.alunos){
@@ -74,28 +29,49 @@ public class GerenciadorPibid{
 		}
 	}
 	
-	public List<Aluno> getListaDeAlunosCriados(){
-		return this.alunos;
+	public void cadastraCoordenador(Coordenador coo1) {
+		boolean existe=false;
+		for (Coordenador c: this.coordenadores){
+			if(c.getMatricula().equals(coo1.getMatricula())){
+				existe=true;
+				break;
+			}
+		}
+		if(existe==false){
+			this.coordenadores.add(coo1);
+		}
+		else{
+			throw new CoordenadorExistenteException("Coordenador Existente!");
+		}
+	}
+	
+	public void cadastrarParticipante(Aluno a,Grupo g) {
+		g.cadastrarParticipante(a);
+		
+	}
+	
+	public void cadastrarGrupo(Grupo grupo){
+		boolean existe = false;
+		
+		for(Grupo g: this.grupos){
+			if(g.getCodigoGrupo().equals(grupo.getCodigoGrupo())){
+				existe = true;
+			}
+		}
+		if(!existe){
+			this.grupos.add(grupo);
+		}
+		else{
+			throw new GrupoJaexisteException("O grupo já existe,por favor ultilize outro código de identificação!");
+		}
 	}
 	
 	public void cadastraTarefa(Tarefa tarefa) {
 		this.tarefas.add(tarefa);	
 	}
 	
-	public List<Tarefa> getListaDeTarefas() {
-		return this.tarefas;
-	}
-	
-	public void cadastrarGrupo(Grupo grupo){
-		this.grupos.add(grupo);
-	}
-	
-	public List<Grupo> getListaDeGrupos(){
-		return this.grupos;
-	}
-	
 	public void cadastrarAlunosEmGrupo(){
-		Tarefa t = new Tarefa("Ministrar curso de Scratch");
+		Tarefa t = new Tarefa("Ministrar curso de Scratch","4346");
 		Grupo g = new Grupo(t,"123");
 		Aluno a = new Aluno("Deyvison","12234576");
 		Aluno a1 = new Aluno("Tayna","53344545");
@@ -103,6 +79,35 @@ public class GerenciadorPibid{
 		g.cadastrarParticipante(a1);
 	}
 	
+    //PARTE DE ADICIONAR
+	public void adicionarTarefaAoGrupo(Tarefa t, Grupo g){
+		for(Grupo x: this.grupos){
+			if(x.getCodigoGrupo().equals(g.getCodigoGrupo())){
+				x.listTarefas().add(t);
+				break;
+				
+			}
+		}		
+	}
+	
+	// PARTE DE GETS
+	public List<Coordenador> getListaDeCoordenadoresCriados(){
+		return this.coordenadores;	
+	}
+
+	public List<Aluno> getListaDeAlunosCriados(){
+		return this.alunos;
+	}
+	
+	public List<Tarefa> getListaDeTarefas() {
+		return this.tarefas;
+	}
+	
+	public List<Grupo> getListaDeGrupos(){
+		return this.grupos;
+	}
+	
+	//PARTE DE PESQUISAS
 	public Grupo pesquisarGrupo(String codigo){
 		for(Grupo i: this.grupos){
 			if(i.getCodigoGrupo().equals(codigo)){
@@ -132,6 +137,17 @@ public class GerenciadorPibid{
 		}
 		throw new CoordenadorInexistenteException ("Coordenador Inexistente!");
 	}
+    
+	public Tarefa pesquisarTarefa(String codTarefa){
+		for (Tarefa x : this.tarefas) {
+			if (x.getcodDaTarefa().equals(codTarefa)) {
+				return x;
+			}
+		}
+		return null;
+	}
+	
+	//PARTE DE REMOÇÃO
 	public void removerAlunoPelaMatricula(String matricula) {
 		
 		boolean removeu = false;
@@ -168,8 +184,20 @@ public class GerenciadorPibid{
 		}
 	}
 	
-	public void cadastrarParticipante(Aluno a,Grupo g) {
-		g.cadastrarParticipante(a);
+	public void removerTarefaDoGrupo(String codTarefa, String codGrupo){
+		for(Grupo x: this.grupos){
+			if(x.getCodigoGrupo().equals(codGrupo)){
+				for(Tarefa y: this.tarefas){
+					if(y.getcodDaTarefa().equalsIgnoreCase(codTarefa)){
+						this.tarefas.remove(y);
+						
+					}
+				}
+				
+				
+			}
+		}	
 		
-	}	
+	}
+		
 }
