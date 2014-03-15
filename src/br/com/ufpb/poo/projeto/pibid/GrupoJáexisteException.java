@@ -1,10 +1,10 @@
 package br.com.ufpb.poo.projeto.pibid;
 
-public class GrupoJaExisteException extends RuntimeException {
+public class GrupoJáexisteException extends RuntimeException {
 	
 	private static final long serialVersionUID = 1L;
 
-	public GrupoJaExisteException (String msg){
+	public GrupoJáexisteException (String msg){
 		super(msg);
 	}
 
