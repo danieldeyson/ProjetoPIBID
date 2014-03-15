@@ -295,11 +295,20 @@ public class PibidTest {
 	}
 	
 	@Test
-	public void cadastrarMaterial(){
+	public void cadastrarMaterialTest(){
 		Material m = new Material ("Canetas","0112",10);
 		pibid.cadastrarMaterial(m);
 		List <Material> list = pibid.getListaDeMateriais();
 		assertEquals(1,list.size());
+	}
+	
+	@Test
+	public void removerMaterialTest(){
+		Material m = new Material ("Canetas","0112",10);
+		pibid.cadastrarMaterial(m);
+		pibid.removerMaterial("0112");
+		List <Material> list = pibid.getListaDeMateriais();
+		assertEquals(0,list.size());
 	}
 	
 }

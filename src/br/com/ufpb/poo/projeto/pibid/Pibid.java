@@ -102,6 +102,10 @@ public class Pibid {
 	public void removerTarefaDoGrupo(Tarefa t, Grupo g){
 		this.gerenciador.removerTarefaDoGrupo(t,g);
 	}
+	
+	public void removerMaterial(String codMaterial){
+		this.gerenciadorMaterial.removerMaterial(codMaterial);
+	}
 
 }
  

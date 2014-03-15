@@ -14,4 +14,17 @@ public class GerenciadorDeMaterial {
 		return this.materiais;
 	}
 	
+	public void removerMaterial (String codMaterial){
+		boolean removeu = false;
+		for(Material m: this.materiais){
+			if(m.getCodMaterial().equals(codMaterial)){
+				this.materiais.remove(m);
+				removeu = true;
+			}
+		}
+		if(removeu == false){
+			throw new MaterialInexistenteException("Material Inexistente!");
+		}
+	}
+	
 }
