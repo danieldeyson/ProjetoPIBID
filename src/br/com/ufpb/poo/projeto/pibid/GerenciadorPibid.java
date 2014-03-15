@@ -107,6 +107,10 @@ public class GerenciadorPibid{
 		return this.grupos;
 	}
 	
+	public List<Tarefa> getListadetarefasCadastradasEmUmGrupo(){
+		return grupo.listTarefas();
+	}
+	
 	//PARTE DE PESQUISAS
 	public Grupo pesquisarGrupo(String codigo){
 		for(Grupo i: this.grupos){
@@ -187,9 +191,9 @@ public class GerenciadorPibid{
 	public void removerTarefaDoGrupo(String codTarefa, String codGrupo){
 		for(Grupo x: this.grupos){
 			if(x.getCodigoGrupo().equals(codGrupo)){
-				for(Tarefa y: this.tarefas){
+				for(Tarefa y: x.listTarefas()){
 					if(y.getcodDaTarefa().equalsIgnoreCase(codTarefa)){
-						this.tarefas.remove(y);
+						x.listTarefas().remove(y);
 						
 					}
 				}

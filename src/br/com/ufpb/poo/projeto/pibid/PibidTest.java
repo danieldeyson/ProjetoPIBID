@@ -240,7 +240,7 @@ public class PibidTest {
 		pibid.cadastrarGrupo(g);
 		pibid.adicionarTarefaAoGrupo(t, g);
 		pibid.removerTarefaDoGrupo("478","12398473");
-		List<Tarefa> tarefas = pibid.getListaDeTarefas();
+		List<Tarefa> tarefas = pibid.getListadetarefasCadastradasEmUmGrupo();
 		assertEquals(0,tarefas.size());	
 	}
 	
