@@ -188,6 +188,16 @@ public class PibidTest {
 	}
 	
 	@Test
+	public void verificarTamanhoDaListadeAlunosTest(){
+		Aluno a= new Aluno ("Luana","12132456");
+		Aluno b= new Aluno("Rhaleff","098876786");
+		pibid.cadastrarAluno(a);
+		pibid.cadastrarAluno(b);
+		List<Aluno> listaAluno=pibid.getListaDeAlunosCriados();
+		assertEquals(2,listaAluno.size());	
+	}
+	
+	@Test
 	public void removerTarefaDoGrupoTest(){
 		Tarefa t = new Tarefa("Ministrar curso de Python");
 		pibid.cadastrarTarefa(t);
