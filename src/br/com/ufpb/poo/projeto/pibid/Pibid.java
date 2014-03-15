@@ -70,13 +70,13 @@ public class Pibid {
 		return this.gerenciador.pesquisarCoordenador(siape);
 	}
 	
-	public Tarefa pesquisarTarefa(Tarefa t){
-		return this.gerenciador.pesquisarTarefa(t);
+	public Tarefa pesquisarTarefa(String codTarefa){
+		return this.gerenciador.pesquisarTarefa(codTarefa);
 	}
 
 	// PARTE DE REMOÇÕES
-	public void removerTarefaDoGrupo(Tarefa t, Grupo g){
-		this.gerenciador.removerTarefaDoGrupo(t, g);
+	public void removerTarefaDoGrupo(String codTarefa, String codGrupo){
+		this.gerenciador.removerTarefaDoGrupo(codTarefa, codGrupo);
 	}
 	
 	public void removerAlunoPelaMatricula(String matricula){

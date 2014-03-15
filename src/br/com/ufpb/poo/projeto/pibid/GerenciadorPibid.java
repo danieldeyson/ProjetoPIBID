@@ -62,7 +62,7 @@ public class GerenciadorPibid{
 			this.grupos.add(grupo);
 		}
 		else{
-			throw new GrupoJáexisteException("O grupo já existe,por favor ultilize outro código de identificação!");
+			throw new GrupoJaexisteException("O grupo já existe,por favor ultilize outro código de identificação!");
 		}
 	}
 	
@@ -71,7 +71,7 @@ public class GerenciadorPibid{
 	}
 	
 	public void cadastrarAlunosEmGrupo(){
-		Tarefa t = new Tarefa("Ministrar curso de Scratch");
+		Tarefa t = new Tarefa("Ministrar curso de Scratch","4346");
 		Grupo g = new Grupo(t,"123");
 		Aluno a = new Aluno("Deyvison","12234576");
 		Aluno a1 = new Aluno("Tayna","53344545");
@@ -138,9 +138,9 @@ public class GerenciadorPibid{
 		throw new CoordenadorInexistenteException ("Coordenador Inexistente!");
 	}
     
-	public Tarefa pesquisarTarefa(Tarefa t){
+	public Tarefa pesquisarTarefa(String codTarefa){
 		for (Tarefa x : this.tarefas) {
-			if (x.getDescricao().equals(t.getDescricao())) {
+			if (x.getcodDaTarefa().equals(codTarefa)) {
 				return x;
 			}
 		}
@@ -184,12 +184,12 @@ public class GerenciadorPibid{
 		}
 	}
 	
-	public void removerTarefaDoGrupo(Tarefa t, Grupo g){
+	public void removerTarefaDoGrupo(String codTarefa, String codGrupo){
 		for(Grupo x: this.grupos){
-			if(x.getCodigoGrupo().equals(g.getCodigoGrupo())){
+			if(x.getCodigoGrupo().equals(codGrupo)){
 				for(Tarefa y: this.tarefas){
-					if(y.getDescricao().equalsIgnoreCase(t.getDescricao())){
-						this.tarefas.remove(t);
+					if(y.getcodDaTarefa().equalsIgnoreCase(codTarefa)){
+						this.tarefas.remove(y);
 						
 					}
 				}
