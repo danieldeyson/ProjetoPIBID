@@ -136,12 +136,13 @@ public class PibidTest {
 		assertEquals(c,pibid.pesquisarCoordenador("9123124"));
 	}
 	
-	/*/@Test
+	@Test
 	public void pesquisarTarefaTest(){
 		Tarefa tarefa=new Tarefa("Ministrar aula de HTML");
 		pibid.cadastrarTarefa(tarefa);
-		pibid.pesquisarTarefa(tarefa);	
-	}/*/
+		Tarefa retorno=pibid.pesquisarTarefa(tarefa);
+		assertEquals(tarefa,retorno);	
+	}
 	
 	@Test
 	public void removerTarefaDoGrupoTest(){

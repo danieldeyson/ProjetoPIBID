@@ -125,7 +125,15 @@ public class GerenciadorPibid{
 		}
 		throw new CoordenadorInexistenteException ("Coordenador Inexistente!");
 	}
-
+    
+	public Tarefa pesquisarTarefa(Tarefa t){
+		for (Tarefa x : this.tarefas) {
+			if (x.getDescricao().equals(t.getDescricao())) {
+				return x;
+			}
+		}
+		return null;
+	}
 	//PARTE DE REMOÇÃO
 	public void removerAlunoPelaMatricula(String matricula) {
 		

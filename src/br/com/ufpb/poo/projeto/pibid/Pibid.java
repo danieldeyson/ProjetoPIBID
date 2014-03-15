@@ -66,6 +66,9 @@ public class Pibid {
 		return this.gerenciador.pesquisarCoordenador(siape);
 	}
 	
+	public Tarefa pesquisarTarefa(Tarefa t){
+		return this.gerenciador.pesquisarTarefa(t);
+	}
 	// PARTE DE REMOÇÕES
 	public void removerTarefaDoGrupo(Tarefa t, Grupo g){
 		this.gerenciador.removerTarefaDoGrupo(t, g);
