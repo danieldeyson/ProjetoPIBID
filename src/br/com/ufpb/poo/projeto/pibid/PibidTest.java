@@ -279,7 +279,6 @@ public class PibidTest {
 	public void removerAlunoInexistenteTest(){
 		pibid.removerAlunoPelaMatricula("123456567");
 		List<Aluno> aluno = pibid.getListaDeAlunosCriados();
-		assertEquals(0,aluno.size());	
 	}
 	
 	@Test
