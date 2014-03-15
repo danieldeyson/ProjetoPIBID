@@ -278,7 +278,6 @@ public class PibidTest {
 	@Test(expected = AlunoInexistenteException.class)
 	public void removerAlunoInexistenteTest(){
 		pibid.removerAlunoPelaMatricula("123456567");
-		List<Aluno> aluno = pibid.getListaDeAlunosCriados();
 	}
 	
 	@Test
@@ -293,8 +292,6 @@ public class PibidTest {
 	@Test(expected = CoordenadorInexistenteException.class)
 	public void removerCoordenadorInexistenteTest(){
 		pibid.removerCoordenadorPeloSiape("81241432");
-		List<Coordenador> coord = pibid.getListaDeCoordenadoresCriados();
 	}
-	
 	
 }
