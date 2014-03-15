@@ -51,7 +51,19 @@ public class GerenciadorPibid{
 	}
 	
 	public void cadastrarGrupo(Grupo grupo){
-		this.grupos.add(grupo);
+		boolean existe = false;
+		
+		for(Grupo g: this.grupos){
+			if(g.getCodigoGrupo().equals(grupo.getCodigoGrupo())){
+				existe = true;
+			}
+		}
+		if(!existe){
+			this.grupos.add(grupo);
+		}
+		else{
+			throw new GrupoJáexisteException("O grupo já existe,por favor ultilize outro código de identificação!");
+		}
 	}
 	
 	public void cadastraTarefa(Tarefa tarefa) {
@@ -134,6 +146,7 @@ public class GerenciadorPibid{
 		}
 		return null;
 	}
+	
 	//PARTE DE REMOÇÃO
 	public void removerAlunoPelaMatricula(String matricula) {
 		

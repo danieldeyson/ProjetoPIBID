@@ -1,4 +1,5 @@
 package br.com.ufpb.poo.projeto.pibid;
+
 import static org.junit.Assert.*;
 import java.util.LinkedList;
 import java.util.List;
@@ -88,6 +89,16 @@ public class PibidTest {
 		Grupo grupo = new Grupo(tarefa,"012");
 		pibid.cadastrarGrupo(grupo);
 		assertEquals(grupo,pibid.pesquisarGrupo("012"));
+	}
+	
+	@Test(expected = GrupoJáexisteException.class)
+	public void cadastraGrupoComMesmoCodigoTest(){
+		Tarefa tarefa = new Tarefa("Produzir materiais");
+		Grupo grupo = new Grupo(tarefa,"007");
+		pibid.cadastrarGrupo(grupo);
+		Tarefa tarefa2 = new Tarefa("Elaborar testes no jogo de raciocio logico");
+		Grupo grupo2 = new Grupo(tarefa,"007");
+		pibid.cadastrarGrupo(grupo2);
 	}
 	
 	@Test
