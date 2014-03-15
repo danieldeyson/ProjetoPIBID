@@ -279,8 +279,7 @@ public class PibidTest {
 	public void removerAlunoInexistenteTest(){
 		pibid.removerAlunoPelaMatricula("123456567");
 		List<Aluno> aluno = pibid.getListaDeAlunosCriados();
-		assertEquals(0,aluno.size());
-		
+		assertEquals(0,aluno.size());	
 	}
 	
 	@Test
@@ -296,7 +295,6 @@ public class PibidTest {
 	public void removerCoordenadorInexistenteTest(){
 		pibid.removerCoordenadorPeloSiape("81241432");
 		List<Coordenador> coord = pibid.getListaDeCoordenadoresCriados();
-		assertEquals(0,coord.size());
 	}
 	
 	
