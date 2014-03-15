@@ -238,10 +238,10 @@ public class PibidTest {
 		pibid.cadastrarTarefa(t);
 		Grupo g = new Grupo(t,"12398473");
 		pibid.cadastrarGrupo(g);
+		pibid.adicionarTarefaAoGrupo(t, g);
 		pibid.removerTarefaDoGrupo("478","12398473");
 		List<Tarefa> tarefas = pibid.getListaDeTarefas();
 		assertEquals(0,tarefas.size());	
-		
 	}
 	
 	@Test
