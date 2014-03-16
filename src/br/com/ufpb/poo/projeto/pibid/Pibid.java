@@ -46,6 +46,10 @@ public class Pibid {
 		this.gerenciador.adicionarTarefaAoGrupo(t, g);
 	}
 	
+	public void adicionarQuantidadeDeMaterial(String codigo, int quantidade){
+		this.gerenciadorMaterial.adicionarQuantidadeDeMaterial(codigo, quantidade);
+	}
+	
 	// PARTE DE GETS
 	public List<Coordenador> getListaDeCoordenadoresCriados(){
 		return this.gerenciador.getListaDeCoordenadoresCriados();
@@ -70,7 +74,10 @@ public class Pibid {
 	public List <Material> getListaDeMateriais (){
 		return this.gerenciadorMaterial.getListaDeMateriais();
 	}
-
+	
+	public Material getMaterial (String codigo){
+		return this.gerenciadorMaterial.getMaterial(codigo);
+	}
 	// PARTE DE PESQUISAS
 	public Grupo pesquisarGrupo(String codigo){
 		return this.gerenciador.pesquisarGrupo(codigo);

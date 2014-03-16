@@ -294,6 +294,7 @@ public class PibidTest {
 		pibid.removerCoordenadorPeloSiape("81241432");
 	}
 	
+	
 	@Test
 	public void cadastrarMaterialTest(){
 		Material m = new Material ("Canetas","0112",10);
@@ -329,5 +330,13 @@ public class PibidTest {
 		Material m = new Material ("Cadernos","1212",1);
 		pibid.cadastrarMaterial(m);
 		pibid.pesquisarMaterial("0102");
+	}
+	
+	@Test
+	public void adicionarQuantidadeDeMaterialTest(){
+		Material m = new Material ("Canetas","0112",10);
+		pibid.cadastrarMaterial(m);
+		pibid.adicionarQuantidadeDeMaterial("0112",90);
+		assertEquals(100, pibid.getMaterial("0112").getQuantidade());
 	}
 }

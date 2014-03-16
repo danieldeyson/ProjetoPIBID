@@ -36,4 +36,21 @@ public class GerenciadorDeMaterial {
 		throw new MaterialInexistenteException ("Material Inexistente!");		
 	}
 	
+	public Material getMaterial(String cod){
+		for (Material m: this.materiais){
+			if(m.getCodMaterial().equals(cod)){
+				return m;
+			}
+		}
+		throw new MaterialInexistenteException ("Material Inexistente!");
+	}
+	public void adicionarQuantidadeDeMaterial (String codigo, int quant){
+		int quantidade;
+		for (Material m: this.materiais){
+			if(m.getCodMaterial().equals(codigo)){
+				quantidade=m.getQuantidade()+quant;
+				m.setQuantidade(quantidade);
+			}
+		}
+	}
 }
