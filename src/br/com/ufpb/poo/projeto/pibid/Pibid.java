@@ -117,6 +117,10 @@ public class Pibid {
 	public void removerMaterial(String codMaterial){
 		this.gerenciadorMaterial.removerMaterial(codMaterial);
 	}
+	
+	public void removerQuantidadeDeMaterial (String codigo, int quant){
+		this.gerenciadorMaterial.removerQuantidadeDeMaterial(codigo, quant);
+	}
 
 }
  

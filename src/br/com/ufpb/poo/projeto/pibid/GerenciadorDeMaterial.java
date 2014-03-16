@@ -7,7 +7,7 @@ public class GerenciadorDeMaterial {
 	private List<Material> materiais = new LinkedList<Material>();
 	
 	public void cadastrarMaterial(Material material){
-			this.materiais.add(material);
+		this.materiais.add(material);
 	}
 	
 	public List <Material> getListaDeMateriais(){
@@ -44,12 +44,33 @@ public class GerenciadorDeMaterial {
 		}
 		throw new MaterialInexistenteException ("Material Inexistente!");
 	}
+	
 	public void adicionarQuantidadeDeMaterial (String codigo, int quant){
 		int quantidade;
 		for (Material m: this.materiais){
 			if(m.getCodMaterial().equals(codigo)){
-				quantidade=m.getQuantidade()+quant;
-				m.setQuantidade(quantidade);
+				if(quant>=0){
+					quantidade=m.getQuantidade()+quant;
+					m.setQuantidade(quantidade);
+				}
+				else{
+					throw new QuantidadeNegativaException("Impossível Adicionar! Quantidade Negativa!");
+				}
+			}
+		}
+	}
+	
+	public void removerQuantidadeDeMaterial (String codigo, int quant){
+		int quantidade;
+		for (Material m: this.materiais){
+			if(m.getCodMaterial().equals(codigo)){
+				if(quant>=0){
+					quantidade=m.getQuantidade()-quant;
+					m.setQuantidade(quantidade);
+				}
+				else{
+					throw new QuantidadeNegativaException("Impossível Remover! Quantidade Negativa!");
+				}
 			}
 		}
 	}

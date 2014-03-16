@@ -334,9 +334,31 @@ public class PibidTest {
 	
 	@Test
 	public void adicionarQuantidadeDeMaterialTest(){
-		Material m = new Material ("Canetas","0112",10);
+		Material m = new Material ("Canetas","0112",1);
 		pibid.cadastrarMaterial(m);
-		pibid.adicionarQuantidadeDeMaterial("0112",90);
-		assertEquals(100, pibid.getMaterial("0112").getQuantidade());
+		pibid.adicionarQuantidadeDeMaterial("0112",1);
+		assertEquals(2, pibid.getMaterial("0112").getQuantidade());
+	}
+	
+	@Test
+	public void removerQuantidadeDeMaterialTest(){
+		Material m = new Material ("Lápis","0213",9);
+		pibid.cadastrarMaterial(m);
+		pibid.removerQuantidadeDeMaterial("0213",10);
+		assertEquals(-1, pibid.getMaterial("0213").getQuantidade());
+	}
+	
+	@Test(expected = QuantidadeNegativaException.class)
+	public void adicionarQuantidadeNegativaDeMaterialTest(){
+		Material m = new Material ("Folhas","1459",10);
+		pibid.cadastrarMaterial(m);
+		pibid.adicionarQuantidadeDeMaterial("1459",-1);
+	}
+	
+	@Test(expected = QuantidadeNegativaException.class)
+	public void removerQuantidadeNegativaDeMaterialTest(){
+		Material m = new Material ("Folhas","1459",10);
+		pibid.cadastrarMaterial(m);
+		pibid.adicionarQuantidadeDeMaterial("1459",-1);
 	}
 }
