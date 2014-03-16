@@ -56,6 +56,14 @@ public class PibidTest {
 		pibid.cadastrarAluno(aluno2);
 	}
 	
+	@Test(expected = AlunoExistenteException.class)
+	public void cadastraAlunoComMesmaMatriculaTest(){
+		Aluno aluno1= new Aluno("Luana Tainá","81211369");
+		Aluno aluno2= new Aluno("Marina Oliveira","81211369");
+		pibid.cadastrarAluno(aluno1);
+		pibid.cadastrarAluno(aluno2);
+	}
+	
 	@Test
 	public void cadastrarTarefasTest(){
 		Tarefa tarefa=new Tarefa("Ministrar aula de HTML","01");
@@ -138,9 +146,6 @@ public class PibidTest {
 		pibid.cadastrarAluno(a);
 		assertEquals(a,pibid.pesquisarAlunoPeloNome("Luana"));
 	}
-	
-	
-	
 	
 	@Test(expected = AlunoInexistenteException.class)
 	public void pesquisarAlunoInexistenteTest(){
