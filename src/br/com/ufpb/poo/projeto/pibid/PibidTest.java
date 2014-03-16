@@ -340,12 +340,11 @@ public class PibidTest {
 		assertEquals(2, pibid.getMaterial("0112").getQuantidade());
 	}
 	
-	@Test
+	@Test(expected = QuantidadeNegativaException.class)
 	public void removerQuantidadeDeMaterialTest(){
-		Material m = new Material ("Lápis","0213",9);
+		Material m = new Material ("Lápis","0213",8);
 		pibid.cadastrarMaterial(m);
 		pibid.removerQuantidadeDeMaterial("0213",10);
-		assertEquals(-1, pibid.getMaterial("0213").getQuantidade());
 	}
 	
 	@Test(expected = QuantidadeNegativaException.class)
@@ -367,7 +366,34 @@ public class PibidTest {
 		Material m= new Material ("Caneta","0012",3);
 		pibid.cadastrarMaterial(m);
 		pibid.alterarNomeDeMaterial(m,"Lápis");
-		List <Material> Retorno= pibid.getListaDeMateriais();
-		assertEquals("Lápis",Retorno.get(0).getNome());
+		List <Material> retorno= pibid.getListaDeMateriais();
+		assertEquals("Lápis",retorno.get(0).getNome());
 	}
+	
+	@Test
+	public void pesquisarMaterialPeloNomeTest(){
+		Material m= new Material("Caneta","0012",5);
+		pibid.cadastrarMaterial(m);
+		Material retorno=pibid.pesquisarMaterialPeloNome("Caneta");
+		assertEquals(m,retorno);
+	}
+	
+	@Test
+	public void pesquisarMateriaisEmFaltaTest(){
+		Material m1= new Material("Caneta","0012",5);
+		Material m2= new Material("Borracha","0013",4);
+		Material m3= new Material("Cartolina","0014",8);
+		Material m4= new Material("Lápis","0015",2);
+		pibid.cadastrarMaterial(m1);
+		pibid.cadastrarMaterial(m2);
+		pibid.cadastrarMaterial(m3);
+		pibid.cadastrarMaterial(m4);
+		pibid.removerQuantidadeDeMaterial("0012", 5);
+		pibid.removerQuantidadeDeMaterial("0013", 4);
+		List<Material> retorno=pibid.pesquisarMaterialEmFalta();
+		assertEquals(2,retorno.size());
+	}
+	
+	
+	
 }

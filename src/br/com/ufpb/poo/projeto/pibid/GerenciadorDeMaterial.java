@@ -70,13 +70,38 @@ public class GerenciadorDeMaterial {
 					m.setQuantidade(quantidade);
 				}
 				else{
-					throw new QuantidadeNegativaException("Impossível Remover! Quantidade Negativa!");
+					throw new QuantidadeNegativaException("Impossível Remover!");
 				}
 			}
 		}
 	}
 	
-	public void AlterarNomeDeMaterial(Material m,String nome){
+	public void alterarNomeDeMaterial (Material m,String nome){
 		m.setNome(nome);
 	}
-}
+	
+	public Material pesquisarMaterialPeloNome (String nome){
+		for(Material m: this.materiais){
+				if(m.getNome().equals(nome)){
+					return m;
+					
+				}
+			}
+			throw new MaterialInexistenteException ("Material Inexistente!");		
+		}
+	
+	public List<Material> pesquisarMaterialEmFalta(){
+		List<Material> retorno=new LinkedList<Material>();
+		for(Material m: this.materiais){
+			if(m.getQuantidade()==0){
+				retorno.add(m);
+			}
+				
+		}
+		return retorno;
+		
+	}
+	}
+
+
+

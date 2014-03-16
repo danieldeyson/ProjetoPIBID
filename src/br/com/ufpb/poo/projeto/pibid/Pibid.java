@@ -98,6 +98,14 @@ public class Pibid {
 	public Material pesquisarMaterial (String codMaterial){
 		return this.gerenciadorMaterial.pesquisarMaterial(codMaterial);
 	}
+	
+	public Material pesquisarMaterialPeloNome (String n){
+		return this.gerenciadorMaterial.pesquisarMaterialPeloNome(n);
+	}
+	
+	public List<Material> pesquisarMaterialEmFalta(){
+		return this.gerenciadorMaterial.pesquisarMaterialEmFalta();
+	}
 
 	// PARTE DE REMOÇÕES
 	public void removerAlunoPelaMatricula(String matricula){
@@ -122,9 +130,14 @@ public class Pibid {
 		this.gerenciadorMaterial.removerQuantidadeDeMaterial(codigo, quant);
 	} 
 	
+	// PARTE DE ALTERAR
 	public void alterarNomeDeMaterial (Material m,String n){
-		this.gerenciadorMaterial.AlterarNomeDeMaterial(m,n);
+		this.gerenciadorMaterial.alterarNomeDeMaterial(m,n);
 	}
+	
+	
+	
+	
 
 }
  
