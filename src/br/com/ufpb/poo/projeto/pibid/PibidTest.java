@@ -392,6 +392,7 @@ public class PibidTest {
 		pibid.removerQuantidadeDeMaterial("0013", 4);
 		List<Material> retorno=pibid.pesquisarMaterialEmFalta();
 		assertEquals(2,retorno.size());
+		int x=0;
 	}
 	
 	
