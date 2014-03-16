@@ -163,6 +163,14 @@ public class PibidTest {
 	}
 	
 	@Test
+	public void pesquisarGrupoPeloCodigoTest(){
+		Tarefa t = new Tarefa("Ministrar curso de HTML","456");
+		Grupo g = new Grupo(t,"123");
+		pibid.cadastrarGrupo(g);
+		assertEquals(g,pibid.pesquisarGrupo("123"));
+	}
+	
+	@Test
 	public void pesquisarCoordenadorTest(){
 		Coordenador c = new Coordenador("Ana Liz", "1241243");
 		pibid.cadastraCoordenador(c);
