@@ -120,6 +120,10 @@ public class Pibid {
 	
 	public void removerQuantidadeDeMaterial (String codigo, int quant){
 		this.gerenciadorMaterial.removerQuantidadeDeMaterial(codigo, quant);
+	} 
+	
+	public void alterarNomeDeMaterial (Material m,String n){
+		this.gerenciadorMaterial.AlterarNomeDeMaterial(m,n);
 	}
 
 }

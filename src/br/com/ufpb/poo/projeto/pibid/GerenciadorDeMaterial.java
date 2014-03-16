@@ -20,6 +20,7 @@ public class GerenciadorDeMaterial {
 			if(m.getCodMaterial().equals(codMaterial)){
 				this.materiais.remove(m);
 				removeu = true;
+				break;
 			}
 		}
 		if(removeu == false){
@@ -73,5 +74,9 @@ public class GerenciadorDeMaterial {
 				}
 			}
 		}
+	}
+	
+	public void AlterarNomeDeMaterial(Material m,String nome){
+		m.setNome(nome);
 	}
 }

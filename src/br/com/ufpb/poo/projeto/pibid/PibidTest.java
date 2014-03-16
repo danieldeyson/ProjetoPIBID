@@ -361,4 +361,13 @@ public class PibidTest {
 		pibid.cadastrarMaterial(m);
 		pibid.adicionarQuantidadeDeMaterial("1459",-1);
 	}
+	
+	@Test
+	public void alterarNomeDeMaterialTest(){
+		Material m= new Material ("Caneta","0012",3);
+		pibid.cadastrarMaterial(m);
+		pibid.alterarNomeDeMaterial(m,"Lápis");
+		List <Material> Retorno= pibid.getListaDeMateriais();
+		assertEquals("Lápis",Retorno.get(0).getNome());
+	}
 }
