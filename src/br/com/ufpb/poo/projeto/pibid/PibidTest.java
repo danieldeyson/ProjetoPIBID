@@ -132,6 +132,16 @@ public class PibidTest {
 		assertEquals(a,pibid.pesquisaAluno("81211067"));	
 	}
 	
+	@Test
+	public void pesquisaAlunoPeloNomeTest(){
+		Aluno a = new Aluno("Luana","81211067");
+		pibid.cadastrarAluno(a);
+		assertEquals(a,pibid.pesquisarAlunoPeloNome("Luana"));
+	}
+	
+	
+	
+	
 	@Test(expected = AlunoInexistenteException.class)
 	public void pesquisarAlunoInexistenteTest(){
 		Aluno a = new Aluno("Rhaleff","81211133");
@@ -400,7 +410,6 @@ public class PibidTest {
 		pibid.removerQuantidadeDeMaterial("0013", 4);
 		List<Material> retorno=pibid.pesquisarMaterialEmFalta();
 		assertEquals(2,retorno.size());
-		int x=0;
 	}
 	
 	

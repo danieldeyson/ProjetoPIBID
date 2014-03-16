@@ -87,6 +87,10 @@ public class Pibid {
 		return this.gerenciador.pesquisaAluno(matricula);
 	}
 	
+	public Aluno pesquisarAlunoPeloNome(String nome){
+		return this.gerenciador.pesquisarAlunoPeloNome(nome);
+	}
+	
 	public Coordenador pesquisarCoordenador(String siape){
 		return this.gerenciador.pesquisarCoordenador(siape);
 	}

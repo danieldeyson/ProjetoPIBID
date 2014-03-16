@@ -124,6 +124,15 @@ public class GerenciadorPibid{
 		}
 		throw new AlunoInexistenteException ("Aluno Inexistente!");
 	}
+	
+	public Aluno pesquisarAlunoPeloNome(String nome){
+		for (Aluno a: alunos){
+			if(a.getNome().equals(nome)){
+				return a;
+			}
+		}
+		throw new AlunoInexistenteException ("Aluno Inexistente!");
+	}
 
 	public Coordenador pesquisarCoordenador(String siape){
 		
