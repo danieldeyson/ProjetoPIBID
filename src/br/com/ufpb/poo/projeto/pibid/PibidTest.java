@@ -153,6 +153,14 @@ public class PibidTest {
 		pibid.cadastraCoordenador(c);
 		assertEquals(c, pibid.pesquisarCoordenador("1241243"));
 	}
+
+	@Test
+	public void pesquisarCoordenadorPeloNomeTest(){
+		Coordenador c = new Coordenador("Ana Liz", "1241243");
+		pibid.cadastraCoordenador(c);
+		assertEquals(c,pibid.pesquisarCoordenadorPeloNome("Ana Liz"));
+		
+	}
 	
 	@Test(expected = CoordenadorInexistenteException.class)
 	public void pesquisarCoordenadorInexistenteTest(){

@@ -134,6 +134,15 @@ public class GerenciadorPibid{
 		}
 		throw new CoordenadorInexistenteException ("Coordenador Inexistente!");
 	}
+	
+	public Coordenador pesquisarCoordenadorPeloNome(String nome){
+		for(Coordenador c: this.coordenadores){
+			if(c.getNome().equals(nome)){
+				return c;
+			}
+		}
+		throw new CoordenadorInexistenteException ("Coordenador Inexistente!");
+	}
     
 	public Tarefa pesquisarTarefa(String codTarefa){
 		for (Tarefa x : this.tarefas) {

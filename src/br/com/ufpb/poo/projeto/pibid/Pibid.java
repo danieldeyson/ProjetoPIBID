@@ -91,6 +91,10 @@ public class Pibid {
 		return this.gerenciador.pesquisarCoordenador(siape);
 	}
 	
+	public Coordenador pesquisarCoordenadorPeloNome(String nome){
+		return this.gerenciador.pesquisarCoordenadorPeloNome(nome);
+	}
+	
 	public Tarefa pesquisarTarefa(String codTarefa){
 		return this.gerenciador.pesquisarTarefa(codTarefa);
 	}
