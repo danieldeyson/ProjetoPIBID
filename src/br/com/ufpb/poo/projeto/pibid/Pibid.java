@@ -5,10 +5,12 @@ public class Pibid {
 	
 	private GerenciadorPibid gerenciador;
 	private GerenciadorDeMaterial gerenciadorMaterial;
+	private GerenciadorDeEscola gerenciadorEscola;
 	
 	public Pibid(){
 		this.gerenciador= new GerenciadorPibid();
 		this.gerenciadorMaterial = new GerenciadorDeMaterial();
+		this.gerenciadorEscola= new GerenciadorDeEscola(); 
 	}
 	
 	//PARTE DE CADASTROS
@@ -39,6 +41,10 @@ public class Pibid {
 	
 	public void cadastrarMaterial(Material m){
 		this.gerenciadorMaterial.cadastrarMaterial(m);
+	}
+	
+	public void cadastrarEscola(Escola e) throws EscolaExistenteException{
+		this.gerenciadorEscola.cadastrarEscola(e);
 	}
 
 	//PARTE DE ADICIONAR
@@ -77,6 +83,9 @@ public class Pibid {
 	
 	public Material getMaterial (String codigo){
 		return this.gerenciadorMaterial.getMaterial(codigo);
+	}
+	public List<Escola> getEscola (){
+		return this.gerenciadorEscola.getEscolas();
 	}
 	// PARTE DE PESQUISAS
 	public Grupo pesquisarGrupo(String codigo){
@@ -137,6 +146,9 @@ public class Pibid {
 	public void removerQuantidadeDeMaterial (String codigo, int quant){
 		this.gerenciadorMaterial.removerQuantidadeDeMaterial(codigo, quant);
 	} 
+	public void removerEscolaPeloCod (String cod)throws EscolaInexistenteException{
+		this.gerenciadorEscola.removerEscolaPeloCod(cod);
+	}
 	
 	// PARTE DE ALTERAR
 	public void alterarNomeDeMaterial (Material m,String n){

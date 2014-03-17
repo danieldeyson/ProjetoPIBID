@@ -425,6 +425,22 @@ public class PibidTest {
 		assertEquals(2,retorno.size());
 	}
 	
+	@Test
+	public void cadatraEscolaTest() throws EscolaExistenteException{
+		Escola e= new Escola("E.E.E.F.M. Luis Gonzaga Burity","Rio Tinto","01235");
+		pibid.cadastrarEscola(e);
+		List <Escola> escolas = pibid.getEscola();
+		assertEquals(1,escolas.size());
+	}
+	
+	@Test
+	public void removerEscolaPeloCodTest() throws EscolaInexistenteException, EscolaExistenteException{
+		Escola e= new Escola("E.E.E.F.M. Luis Gonzaga Burity","Rio Tinto","01235");
+		pibid.cadastrarEscola(e);
+		pibid.removerEscolaPeloCod("01235");
+		List <Escola> escolas = pibid.getEscola();
+		assertEquals(0,escolas.size());
+	}
 	
 	
 }
