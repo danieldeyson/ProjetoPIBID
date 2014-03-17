@@ -169,7 +169,7 @@ public class PibidTest {
 		pibid.cadastrarGrupo(g);
 		assertEquals(g,pibid.pesquisarGrupo("123"));
 	}
-	
+		
 	@Test
 	public void pesquisarCoordenadorTest(){
 		Coordenador c = new Coordenador("Ana Liz", "1241243");
