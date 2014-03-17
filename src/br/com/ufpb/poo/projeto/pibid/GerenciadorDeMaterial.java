@@ -65,7 +65,7 @@ public class GerenciadorDeMaterial {
 		int quantidade;
 		for (Material m: this.materiais){
 			if(m.getCodMaterial().equals(codigo)){
-				if(quant>=0){
+				if(m.getQuantidade()>=quant){
 					quantidade=m.getQuantidade()-quant;
 					m.setQuantidade(quantidade);
 				}
