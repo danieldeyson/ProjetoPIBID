@@ -127,6 +127,10 @@ public class Pibid {
 	public Escola pesquisarEscolaPeloNome (String n)throws EscolaInexistenteException{
 		return this.gerenciadorEscola.pesquisarEscolaPeloNome(n);
 	}
+	
+	public Escola pesquisarEscolaPeloCod(String cod)throws EscolaInexistenteException{
+		return this.gerenciadorEscola.pesquisarEscolaPeloCod(cod);
+	}
 
 	// PARTE DE REMOÇÕES
 	public void removerAlunoPelaMatricula(String matricula){

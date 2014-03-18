@@ -49,6 +49,15 @@ public class GerenciadorDeEscola {
 		throw new EscolaInexistenteException ("Escola Inexistente!");
 	}
 	
+	public Escola pesquisarEscolaPeloCod(String cod)throws EscolaInexistenteException{
+		for(Escola e:this.escolas){
+			if(e.getCodDoMec().equalsIgnoreCase(cod)){
+				return e;
+			}
+		}
+		throw new EscolaInexistenteException ("Escola Inexistente!");
+	}
+	
 	
 	
 

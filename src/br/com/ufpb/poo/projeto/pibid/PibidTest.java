@@ -449,5 +449,13 @@ public class PibidTest {
 		assertEquals(e,pibid.pesquisarEscolaPeloNome("E.E.E.F.M. Luis Gonzaga Burity"));
 	}
 	
+	@Test
+	public void pesquisarEscolaPeloCodTest()throws EscolaInexistenteException, EscolaExistenteException{
+		Escola e= new Escola("E.E.E.F.M. Luis Gonzaga Burity","Rio Tinto","01235");
+		pibid.cadastrarEscola(e);
+		assertEquals(e,pibid.pesquisarEscolaPeloCod("01235"));
+		
+	}
+	
 	
 }
