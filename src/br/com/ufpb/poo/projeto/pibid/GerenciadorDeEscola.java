@@ -10,7 +10,7 @@ public class GerenciadorDeEscola {
 		return this.escolas;
 	}
 	
-	public void cadastrarEscola(Escola escola)throws EscolaExistenteException {
+	public void cadastrarEscola(Escola escola) {
 		boolean existe=false;
 		for (Escola e: this.escolas){
 			if(e.getCodDoMec().equals(escola.getCodDoMec())){
@@ -26,7 +26,7 @@ public class GerenciadorDeEscola {
 		}
 	}
 	
-	public void removerEscolaPeloCod(String cod)throws EscolaInexistenteException{
+	public void removerEscolaPeloCod(String cod){
 		boolean removeu=false;
 		for (Escola e: this.escolas){
 			if(e.getCodDoMec().equals(cod)){
@@ -40,7 +40,7 @@ public class GerenciadorDeEscola {
 		}
 	}
 	
-	public Escola pesquisarEscolaPeloNome(String nome)throws EscolaInexistenteException{
+	public Escola pesquisarEscolaPeloNome(String nome){
 		for(Escola e: this.escolas){
 			if(e.getNome().equalsIgnoreCase(nome)){
 				return e;
@@ -49,7 +49,7 @@ public class GerenciadorDeEscola {
 		throw new EscolaInexistenteException ("Escola Inexistente!");
 	}
 	
-	public Escola pesquisarEscolaPeloCod(String cod)throws EscolaInexistenteException{
+	public Escola pesquisarEscolaPeloCod(String cod){
 		for(Escola e:this.escolas){
 			if(e.getCodDoMec().equalsIgnoreCase(cod)){
 				return e;

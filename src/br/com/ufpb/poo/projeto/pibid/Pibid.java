@@ -124,11 +124,11 @@ public class Pibid {
 		return this.gerenciadorMaterial.pesquisarMaterialEmFalta();
 	}
 	
-	public Escola pesquisarEscolaPeloNome (String n)throws EscolaInexistenteException{
+	public Escola pesquisarEscolaPeloNome (String n){
 		return this.gerenciadorEscola.pesquisarEscolaPeloNome(n);
 	}
 	
-	public Escola pesquisarEscolaPeloCod(String cod)throws EscolaInexistenteException{
+	public Escola pesquisarEscolaPeloCod(String cod){
 		return this.gerenciadorEscola.pesquisarEscolaPeloCod(cod);
 	}
 
@@ -154,7 +154,7 @@ public class Pibid {
 	public void removerQuantidadeDeMaterial (String codigo, int quant){
 		this.gerenciadorMaterial.removerQuantidadeDeMaterial(codigo, quant);
 	} 
-	public void removerEscolaPeloCod (String cod)throws EscolaInexistenteException{
+	public void removerEscolaPeloCod (String cod){
 		this.gerenciadorEscola.removerEscolaPeloCod(cod);
 	}
 	
