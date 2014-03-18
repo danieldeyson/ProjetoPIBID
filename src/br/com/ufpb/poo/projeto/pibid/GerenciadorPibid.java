@@ -129,10 +129,10 @@ public class GerenciadorPibid{
 		for (Aluno a: alunos){
 			if(a.getNome().equals(nome)){
 				return a;
-			}
 		}
-		throw new AlunoInexistenteException ("Aluno Inexistente!");
 	}
+	throw new AlunoInexistenteException ("Aluno Inexistente!");
+}
 
 	public Coordenador pesquisarCoordenador(String siape){
 		

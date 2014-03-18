@@ -123,6 +123,10 @@ public class Pibid {
 	public List<Material> pesquisarMaterialEmFalta(){
 		return this.gerenciadorMaterial.pesquisarMaterialEmFalta();
 	}
+	
+	public Escola pesquisarEscolaPeloNome (String n)throws EscolaInexistenteException{
+		return this.gerenciadorEscola.pesquisarEscolaPeloNome(n);
+	}
 
 	// PARTE DE REMOÇÕES
 	public void removerAlunoPelaMatricula(String matricula){

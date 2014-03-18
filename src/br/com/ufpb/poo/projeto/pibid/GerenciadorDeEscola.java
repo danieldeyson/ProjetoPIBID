@@ -40,6 +40,15 @@ public class GerenciadorDeEscola {
 		}
 	}
 	
+	public Escola pesquisarEscolaPeloNome(String nome)throws EscolaInexistenteException{
+		for(Escola e: this.escolas){
+			if(e.getNome().equalsIgnoreCase(nome)){
+				return e;
+			}
+		}
+		throw new EscolaInexistenteException ("Escola Inexistente!");
+	}
+	
 	
 	
 
